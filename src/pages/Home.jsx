@@ -1820,8 +1820,7 @@
 import React, { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useSound from '../hooks/useSound';
-import profilePhoto from '../images/profile-photo.jpg';
-
+const profilePhoto = "/images/Profile-photo.jpg";
 const Home = () => {
   const { playHover, playClick } = useSound();
   const [expandedCards, setExpandedCards] = useState({});
