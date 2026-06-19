@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 import Header from './components/Header';
 import MobileNav from './components/MobileNav';
 import Cursor from './components/Cursor';
@@ -68,6 +69,9 @@ function App() {
 
       {/* Mobile Bottom Navigation - Visible only on mobile */}
       {isMobile && <MobileNav currentPage={currentPage} setCurrentPage={setCurrentPage} />}
+      
+      {/* Vercel Speed Insights */}
+      <SpeedInsights />
     </div>
   );
 }
