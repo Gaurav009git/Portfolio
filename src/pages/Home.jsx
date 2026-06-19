@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useSound from '../hooks/useSound';
-import profilePhoto from '../assets/images/Profile-photo.jpg';
+import profilePhoto from "../assets/images/profile-photo.jpg";
 
 const Home = () => {
   const { playHover, playClick } = useSound();
