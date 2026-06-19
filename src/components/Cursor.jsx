@@ -40,15 +40,11 @@ const Cursor = () => {
     const onMouseOver = (e) => {
       const target = e.target;
       // Check if hovering over interactive elements
-      if (target.matches('a, button, .nav-item, .cta-button, .card, .mobile-nav-item, .form-input, .form-textarea, .stat-item, .profile-photo, .contact-info-card')) {
+      if (target.matches('a, button, .nav-item, .cta-button, .card, .mobile-nav-item, .form-input, .form-textarea, .stat-item, .profile-photo, .contact-info-card, .project-card, .modal-content, .filter-button, .project-link, .modal-action-btn, .modal-close-btn, .social-link, .contact-card')) {
         // Add hover class to all cursor segments
-        cursorRefs.current.forEach((ref, index) => {
+        cursorRefs.current.forEach((ref) => {
           if (ref) {
-            if (index === 0) {
-              ref.classList.add('cursor-hover');
-            } else {
-              ref.classList.add('cursor-hover');
-            }
+            ref.classList.add('cursor-hover');
           }
         });
       }
@@ -56,15 +52,11 @@ const Cursor = () => {
 
     const onMouseOut = (e) => {
       const target = e.target;
-      if (target.matches('a, button, .nav-item, .cta-button, .card, .mobile-nav-item, .form-input, .form-textarea, .stat-item, .profile-photo, .contact-info-card')) {
+      if (target.matches('a, button, .nav-item, .cta-button, .card, .mobile-nav-item, .form-input, .form-textarea, .stat-item, .profile-photo, .contact-info-card, .project-card, .modal-content, .filter-button, .project-link, .modal-action-btn, .modal-close-btn, .social-link, .contact-card')) {
         // Remove hover class from all cursor segments
-        cursorRefs.current.forEach((ref, index) => {
+        cursorRefs.current.forEach((ref) => {
           if (ref) {
-            if (index === 0) {
-              ref.classList.remove('cursor-hover');
-            } else {
-              ref.classList.remove('cursor-hover');
-            }
+            ref.classList.remove('cursor-hover');
           }
         });
       }
@@ -266,11 +258,11 @@ const Cursor = () => {
           padding-top: 100px;
         }
 
-        /* ===== SNAKE CURSOR STYLES ===== */
+        /* ===== SNAKE CURSOR STYLES - FIXED Z-INDEX ===== */
         .cursor-segment {
           position: fixed;
           pointer-events: none;
-          z-index: 9999;
+          z-index: 2147483647 !important; /* Maximum z-index to stay above everything */
           border-radius: 50%;
           transform: translate(-50%, -50%);
           transition: all 0.1s ease-out;
@@ -287,7 +279,7 @@ const Cursor = () => {
           box-shadow: 
             0 0 10px var(--google-blue),
             0 0 20px var(--google-blue);
-          z-index: 9999;
+          z-index: 2147483647 !important;
         }
 
         .cursor-tail-1 {
@@ -296,7 +288,7 @@ const Cursor = () => {
           background: #34A853;
           border: 1px solid #34A853;
           opacity: 0.8;
-          z-index: 9998;
+          z-index: 2147483646 !important;
         }
 
         .cursor-tail-2 {
@@ -305,7 +297,7 @@ const Cursor = () => {
           background: #FBBC05;
           border: 1px solid #FBBC05;
           opacity: 0.6;
-          z-index: 9997;
+          z-index: 2147483645 !important;
         }
 
         .cursor-tail-3 {
@@ -314,7 +306,7 @@ const Cursor = () => {
           background: #EA4335;
           border: 1px solid #EA4335;
           opacity: 0.4;
-          z-index: 9996;
+          z-index: 2147483644 !important;
         }
 
         .cursor-tail-4 {
@@ -323,7 +315,7 @@ const Cursor = () => {
           background: #8AB4F8;
           border: 1px solid #8AB4F8;
           opacity: 0.3;
-          z-index: 9995;
+          z-index: 2147483643 !important;
         }
 
         .cursor-hidden {
@@ -1923,27 +1915,25 @@ const Cursor = () => {
           100% { background-position: 0% 50%; }
         }
 
-        /* Custom Cursor Styles */
-        .custom-cursor {
-          position: fixed;
-          top: 0;
-          left: 0;
-          width: 16px;
-          height: 16px;
-          background: #4285F4;
-          border-radius: 50%;
-          pointer-events: none;
-          z-index: 9999;
-          mix-blend-mode: difference;
-          transition: background-color 0.2s ease;
-        }
-
         /* Force cursor on all interactive elements */
         button, a, .nav-item, .cta-button, .card, 
         .mobile-nav-item, .form-input, .form-textarea, 
         .stat-item, .contact-card, input, textarea,
-        [role="button"], .social-link {
+        [role="button"], .social-link,
+        /* Projects specific elements */
+        .project-card, .filter-button, .project-link,
+        .modal-close-btn, .modal-action-btn, .modal-overlay,
+        .modal-content {
           cursor: none !important;
+        }
+
+        /* MODAL SPECIFIC FIX - Ensure modal doesn't block cursor */
+        .modal-overlay {
+          z-index: 99999 !important; /* Lower than cursor z-index */
+        }
+
+        .modal-content {
+          z-index: 99999 !important; /* Lower than cursor z-index */
         }
 
         .space { margin: 0 2px; }
@@ -2001,4 +1991,3 @@ const Cursor = () => {
 };
 
 export default Cursor;
-

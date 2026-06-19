@@ -1,2076 +1,6 @@
-// import React from 'react';
-// import { motion } from 'framer-motion';
-// import useSound from '../hooks/useSound';
-
-// const Projects = () => {
-//   const { playHover, playClick } = useSound();
-
-//   const projects = [
-//     {
-//       title: 'Loopixs',
-//       description: 'Loopixs is a modern social media web application inspired by Instagram and Snapchat, designed for seamless content sharing and real-time engagement. It allows users to upload photos, short videos (Reels), share stories, like, comment, and interact with other users in a dynamic and visually appealing interface.',
-//       tech: ['React', 'Bootstrap', 'Node.js', 'MongoDB', 'GitHub'],
-//       status: 'Completed',
-//       icon: 'ᦠ',
-//       color: '#4285F4',
-//       link: '#'
-//     },
-//     {
-//       title: 'Profitup',
-//       description: 'your all-in-one bookkeeping solution designed to help businesses manage income, expenses, invoices, and financial records with ease.',
-//       tech: ['React', 'Node.js', 'MongoDB', 'vite', 'Bootstrap', 'GitHub'],
-//       status: 'Completed',
-//       icon: '📕',
-//       color: '#FBBC05',
-//       link: '#'
-//     },
-//     {
-//       title: 'Portfolio Website',
-//       description: 'Portfolio Website is a personal web application that showcases an individuals skills, projects, education, and achievements. It provides a professional online presence, allowing recruiters, clients, and employers to explore the users work and easily get in touch.',
-//       tech: ['React', 'Framer Motion', 'Emailjs', 'vite', 'GitHub'],
-//       status: 'Completed',
-//       icon: '💼',
-//       color: '#34A853',
-//       link: '#'
-//     },
-//     {
-//       title: 'Student Attendance System',
-//       description: 'Student Attendance System is a web-based application that automates the process of recording and managing student attendance. It enables teachers to mark attendance digitally, allows administrators to manage student records and generate reports, and helps students track their attendance. The system improves accuracy, saves time, and eliminates the need for manual attendance registers.',
-//       tech: ['React', 'Node.js', 'JSON Web Token (JWT)', 'MongoDB', 'Socket.io','Express.js', 'Bootstrap', 'GitHub'],
-//       status: 'completed',
-//       icon: '👨‍⚖️',
-//       color: '#EA4335',
-//       link: '#'
-//     },
-//     {
-//       title: 'Blood Donation System',
-//       description: 'Blood Donation System is a web-based application that connects blood donors with recipients and healthcare organizations. It allows users to register as donors, search for blood by type and location, manage donation records, and request blood during emergencies. The system simplifies the blood donation process, improves communication, and helps ensure timely access to safe blood for those in need.',
-//       tech: ['React', 'Node.js', 'JSON Web Token (JWT)', 'MongoDB', 'Socket.io','Express.js', 'Bootstrap', 'GitHub'],
-//       status: 'planning',
-//       icon: '🩸',
-//       color: '#EA4335',
-//       link: '#'
-//     },
-//     {
-//       title: 'Connectoo',
-//       description: 'A secure, real-time messaging platform with private and group chats, typing indicators, and message notifications using WebSocket communication.',
-//       tech: ['React', 'Node.js', 'MongoDB', 'Socket.io', 'Bootstrap', 'GitHub'],
-//       status: 'In Progress',
-//       icon: '💬',
-//       color: '#8AB4F8',
-//       link: '#'
-//     },
-//     {
-//       title: 'TaskFlow',
-//       description: 'A full-featured task management web app that lets users create, organize, and track daily activities with deadlines, priorities, and progress tracking. Includes authentication and real-time updates.',
-//       tech: ['React', 'Node.js', 'MongoDB', 'Bootstrap', 'JWT Auth', 'GitHub'],
-//       status: 'In Progress',
-//       icon: '💼',
-//       color: '#E1306C',
-//       link: '#'
-//     }
-//   ];
-
-//   const GoogleText = ({ text }) => (
-//     <span className="google-gradient-text">
-//       {text.split('').map((char, index) => (
-//         <span 
-//           key={index} 
-//           className={
-//             char === ' ' ? 'space' :
-//             index % 4 === 0 ? 'google-blue' :
-//             index % 4 === 1 ? 'google-red' :
-//             index % 4 === 2 ? 'google-yellow' : 'google-green'
-//           }
-//         >
-//           {char}
-//         </span>
-//       ))}
-//     </span>
-//   );
-
-//   const handleProjectClick = (project) => {
-//     playClick();
-//     if (project.link && project.link !== '#') {
-//       window.open(project.link, '_blank');
-//     }
-//   };
-
-//   const handleStatClick = () => {
-//     playClick();
-//   };
-
-//   const handleStatHover = () => {
-//     playHover();
-//   };
-
-//   const getStatusColor = (status) => {
-//     switch (status) {
-//       case 'Completed': return '#34A853';
-//       case 'In Progress': return '#FBBC05';
-//       case 'Planning': return '#4285F4';
-//       default: return '#5F6368';
-//     }
-//   };
-
-//   return (
-//     <div className="page projects-section">
-//       {/* Header Section */}
-//       <motion.div
-//         initial={{ opacity: 0, y: 50 }}
-//         animate={{ opacity: 1, y: 0 }}
-//         transition={{ duration: 0.8 }}
-//         className="projects-header"
-//       >
-//         <h1 className="google-gradient-text">
-//           <GoogleText text="My Projects" />
-//         </h1>
-//         <p className="projects-subtitle">
-//           A Showcase of My Recent Work
-//         </p>
-//       </motion.div>
-
-//       {/* Projects Grid */}
-//       <div className="projects-container">
-//         <div className="projects-grid">
-//           {projects.map((project, index) => (
-//             <motion.div
-//               key={project.title}
-//               className="project-card"
-//               initial={{ opacity: 0, y: 50 }}
-//               animate={{ opacity: 1, y: 0 }}
-//               transition={{ duration: 0.6, delay: index * 0.1 }}
-//               onMouseEnter={playHover}
-//               onClick={() => handleProjectClick(project)}
-//               whileHover={{ 
-//                 y: -8,
-//                 transition: { duration: 0.3 }
-//               }}
-//               whileTap={{ scale: 0.98 }}
-//             >
-//               {/* Project Header */}
-//               <div className="project-header">
-//                 <div className="project-icon" style={{ color: project.color }}>
-//                   {project.icon}
-//                 </div>
-//                 <div className="project-title-section">
-//                   <h3 className="project-title">{project.title}</h3>
-//                   <div 
-//                     className="project-status"
-//                     style={{ backgroundColor: getStatusColor(project.status) }}
-//                   >
-//                     {project.status}
-//                   </div>
-//                 </div>
-//               </div>
-
-//               {/* Project Description */}
-//               <p className="project-description">
-//                 {project.description}
-//               </p>
-
-//               {/* Tech Stack */}
-//               <div className="project-tech">
-//                 {project.tech.map(tech => (
-//                   <span
-//                     key={tech}
-//                     className="tech-tag"
-//                     style={{ 
-//                       borderColor: project.color,
-//                       color: project.color
-//                     }}
-//                   >
-//                     {tech}
-//                   </span>
-//                 ))}
-//               </div>
-
-//               {/* Hover Effect */}
-//               <div 
-//                 className="project-glow"
-//                 style={{ 
-//                   background: `radial-gradient(circle, ${project.color}20 0%, transparent 70%)`
-//                 }}
-//               />
-//             </motion.div>
-//           ))}
-//         </div>
-//       </div>
-
-//       {/* Stats Section */}
-//       <motion.div
-//         initial={{ opacity: 0, y: 30 }}
-//         animate={{ opacity: 1, y: 0 }}
-//         transition={{ duration: 0.6, delay: 0.8 }}
-//         className="projects-stats"
-//       >
-//         <motion.div 
-//           className="stat-item"
-//           onMouseEnter={handleStatHover}
-//           onClick={handleStatClick}
-//           whileHover={{ scale: 1.05 }}
-//           whileTap={{ scale: 0.95 }}
-//         >
-//           <div className="stat-number">
-//             {projects.filter(p => p.status === 'Completed').length}+
-//           </div>
-//           <div className="stat-label">Projects Completed</div>
-//         </motion.div>
-//         <motion.div 
-//           className="stat-item"
-//           onMouseEnter={handleStatHover}
-//           onClick={handleStatClick}
-//           whileHover={{ scale: 1.05 }}
-//           whileTap={{ scale: 0.95 }}
-//         >
-//           <div className="stat-number">
-//             {projects.filter(p => p.status === 'In Progress').length}
-//           </div>
-//           <div className="stat-label">In Progress</div>
-//         </motion.div>
-//         <motion.div 
-//           className="stat-item"
-//           onMouseEnter={handleStatHover}
-//           onClick={handleStatClick}
-//           whileHover={{ scale: 1.05 }}
-//           whileTap={{ scale: 0.95 }}
-//         >
-//           <div className="stat-number">
-//             {projects.reduce((acc, project) => acc + project.tech.length, 0)}+
-//           </div>
-//           <div className="stat-label">Technologies Used</div>
-//         </motion.div>
-//       </motion.div>
-
-//       {/* Complete Global CSS Styles */}
-//       <style>{`
-//         /* ===== GLOBAL STYLES - COMPLETE FIXED VERSION ===== */
-
-//         /* Reset & Variables */
-//         * {
-//           margin: 0;
-//           padding: 0;
-//           box-sizing: border-box;
-//         }
-
-//         :root {
-//           --google-blue: #4285F4;
-//           --google-red: #EA4335;
-//           --google-yellow: #FBBC05;
-//           --google-green: #34A853;
-//           --google-gray: #5F6368;
-//           --bg-dark: #0F0F0F;
-//           --bg-darker: #0A0A0A;
-//           --text-primary: #E8EAED;
-//           --text-secondary: #9AA0A6;
-//           --accent: #8AB4F8;
-//           --card-bg: #1E1E1E;
-//           --border: #3C4043;
-//           --google-blue-dark: #3367D6;
-//         }
-
-//         /* Base Styles */
-//         body {
-//           font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-//           background: var(--bg-dark);
-//           color: var(--text-primary);
-//           overflow-x: hidden;
-//           cursor: none;
-//         }
-
-//         .app {
-//           min-height: 100vh;
-//           position: relative;
-//           width: 100%;
-//           overflow-x: hidden;
-//         }
-
-//         .main-content {
-//           padding: 2rem;
-//           min-height: calc(100vh - 80px);
-//           overflow-x: hidden;
-//           width: 100%;
-//           padding-top: 100px;
-//         }
-
-//         /* ===== SNAKE CURSOR STYLES ===== */
-//         .cursor-segment {
-//           position: fixed;
-//           pointer-events: none;
-//           z-index: 9999;
-//           border-radius: 50%;
-//           transform: translate(-50%, -50%);
-//           transition: all 0.1s ease-out;
-//           will-change: transform;
-//           backface-visibility: hidden;
-//           perspective: 1000px;
-//         }
-
-//         .cursor-head {
-//           width: 16px;
-//           height: 16px;
-//           background: var(--google-blue);
-//           border: 2px solid var(--google-blue);
-//           box-shadow: 
-//             0 0 10px var(--google-blue),
-//             0 0 20px var(--google-blue);
-//           z-index: 9999;
-//         }
-
-//         .cursor-tail-1 {
-//           width: 12px;
-//           height: 12px;
-//           background: #34A853;
-//           border: 1px solid #34A853;
-//           opacity: 0.8;
-//           z-index: 9998;
-//         }
-
-//         .cursor-tail-2 {
-//           width: 10px;
-//           height: 10px;
-//           background: #FBBC05;
-//           border: 1px solid #FBBC05;
-//           opacity: 0.6;
-//           z-index: 9997;
-//         }
-
-//         .cursor-tail-3 {
-//           width: 8px;
-//           height: 8px;
-//           background: #EA4335;
-//           border: 1px solid #EA4335;
-//           opacity: 0.4;
-//           z-index: 9996;
-//         }
-
-//         .cursor-tail-4 {
-//           width: 6px;
-//           height: 6px;
-//           background: #8AB4F8;
-//           border: 1px solid #8AB4F8;
-//           opacity: 0.3;
-//           z-index: 9995;
-//         }
-
-//         .cursor-hidden {
-//           opacity: 0 !important;
-//         }
-
-//         .cursor-click .cursor-head {
-//           transform: translate(-50%, -50%) scale(0.8);
-//           background: var(--google-green);
-//           border-color: var(--google-green);
-//           box-shadow: 
-//             0 0 15px var(--google-green),
-//             0 0 30px var(--google-green);
-//         }
-
-//         .cursor-hover .cursor-head {
-//           transform: translate(-50%, -50%) scale(1.3);
-//           background: var(--google-yellow);
-//           border-color: var(--google-yellow);
-//           box-shadow: 
-//             0 0 15px var(--google-yellow),
-//             0 0 30px var(--google-yellow);
-//         }
-
-//         .cursor-hover ~ .cursor-tail-1,
-//         .cursor-hover ~ .cursor-tail-2,
-//         .cursor-hover ~ .cursor-tail-3,
-//         .cursor-hover ~ .cursor-tail-4 {
-//           background: var(--google-yellow) !important;
-//           border-color: var(--google-yellow) !important;
-//         }
-
-//         .cursor-segment {
-//           transition: 
-//             left 0.15s linear,
-//             top 0.15s linear,
-//             transform 0.2s ease,
-//             background 0.3s ease,
-//             border-color 0.3s ease !important;
-//         }
-
-//         /* ===== HEADER WITH SUFFICIENT SPACE ===== */
-//         .header {
-//           position: fixed;
-//           top: 0;
-//           left: 0;
-//           width: 100%;
-//           background: rgba(15, 15, 15, 0.98);
-//           backdrop-filter: blur(20px);
-//           border-bottom: 1px solid var(--border);
-//           z-index: 1000;
-//           padding: 1.5rem 2rem;
-//           height: 80px;
-//           display: flex;
-//           align-items: center;
-//           justify-content: center;
-//         }
-
-//         .nav {
-//           display: flex;
-//           justify-content: center;
-//           gap: 3rem;
-//           align-items: center;
-//         }
-
-//         .nav-item {
-//           color: var(--text-secondary);
-//           text-decoration: none;
-//           font-weight: 500;
-//           padding: 0.75rem 1.5rem;
-//           border-radius: 12px;
-//           transition: all 0.3s ease;
-//           position: relative;
-//           overflow: hidden;
-//           cursor: none;
-//           background: none;
-//           border: none;
-//           font: inherit;
-//           font-size: 1.1rem;
-//         }
-
-//         .nav-item:hover {
-//           color: var(--text-primary);
-//           background: rgba(66, 133, 244, 0.15);
-//           transform: translateY(-2px);
-//         }
-
-//         .nav-item.active {
-//           color: var(--google-blue);
-//           background: rgba(66, 133, 244, 0.1);
-//         }
-
-//         .nav-item::before {
-//           content: '';
-//           position: absolute;
-//           bottom: 0;
-//           left: 50%;
-//           width: 0;
-//           height: 2px;
-//           background: var(--google-blue);
-//           transition: all 0.3s ease;
-//           transform: translateX(-50%);
-//         }
-
-//         .nav-item:hover::before,
-//         .nav-item.active::before {
-//           width: 80%;
-//         }
-
-//         /* ===== INSTAGRAM-LIKE MOBILE NAVBAR ===== */
-//         .mobile-nav {
-//           position: fixed;
-//           bottom: 0;
-//           left: 0;
-//           width: 100%;
-//           background: rgba(15, 15, 15, 0.98);
-//           backdrop-filter: blur(30px);
-//           border-top: 1px solid var(--border);
-//           display: flex;
-//           justify-content: space-around;
-//           align-items: center;
-//           padding: 0.8rem 0.5rem;
-//           z-index: 1000;
-//           height: 70px;
-//           box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
-//         }
-
-//         .mobile-nav-item {
-//           display: flex;
-//           flex-direction: column;
-//           align-items: center;
-//           justify-content: center;
-//           color: var(--text-secondary);
-//           text-decoration: none;
-//           font-size: 0.65rem;
-//           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-//           padding: 0.4rem 0.6rem;
-//           border-radius: 16px;
-//           cursor: pointer;
-//           border: none;
-//           background: transparent;
-//           min-width: 55px;
-//           position: relative;
-//           overflow: hidden;
-//         }
-
-//         .mobile-nav-item::before {
-//           content: '';
-//           position: absolute;
-//           top: 0;
-//           left: 0;
-//           right: 0;
-//           bottom: 0;
-//           background: linear-gradient(45deg, var(--google-blue), var(--google-green));
-//           opacity: 0;
-//           transition: opacity 0.3s ease;
-//           border-radius: 16px;
-//           z-index: -1;
-//         }
-
-//         .mobile-nav-item:hover::before,
-//         .mobile-nav-item.active::before {
-//           opacity: 0.1;
-//         }
-
-//         .mobile-nav-item:hover,
-//         .mobile-nav-item.active {
-//           color: var(--google-blue);
-//           transform: translateY(-5px);
-//           background: rgba(66, 133, 244, 0.15);
-//         }
-
-//         .mobile-nav-item.active {
-//           color: var(--google-blue);
-//           font-weight: 600;
-//         }
-
-//         .mobile-nav-item.active::after {
-//           content: '';
-//           position: absolute;
-//           bottom: 2px;
-//           width: 4px;
-//           height: 4px;
-//           background: var(--google-blue);
-//           border-radius: 50%;
-//           transition: all 0.3s ease;
-//         }
-
-//         .mobile-nav-icon {
-//           font-size: 1.4rem;
-//           margin-bottom: 0.2rem;
-//           transition: all 0.3s ease;
-//           filter: grayscale(0.7);
-//         }
-
-//         .mobile-nav-item:hover .mobile-nav-icon,
-//         .mobile-nav-item.active .mobile-nav-icon {
-//           filter: grayscale(0);
-//           transform: scale(1.1);
-//         }
-
-//         .mobile-nav-item:nth-child(1):hover .mobile-nav-icon,
-//         .mobile-nav-item:nth-child(1).active .mobile-nav-icon {
-//           color: var(--google-blue);
-//           transform: scale(1.15);
-//         }
-
-//         .mobile-nav-item:nth-child(2):hover .mobile-nav-icon,
-//         .mobile-nav-item:nth-child(2).active .mobile-nav-icon {
-//           color: var(--google-green);
-//           transform: scale(1.15);
-//         }
-
-//         .mobile-nav-item:nth-child(3):hover .mobile-nav-icon,
-//         .mobile-nav-item:nth-child(3).active .mobile-nav-icon {
-//           color: var(--google-yellow);
-//           transform: scale(1.15);
-//         }
-
-//         .mobile-nav-item:nth-child(4):hover .mobile-nav-icon,
-//         .mobile-nav-item:nth-child(4).active .mobile-nav-icon {
-//           color: var(--google-red);
-//           transform: scale(1.15);
-//         }
-
-//         @keyframes navPulse {
-//           0%, 100% {
-//             transform: scale(1);
-//           }
-//           50% {
-//             transform: scale(1.1);
-//           }
-//         }
-
-//         .mobile-nav-item.active .mobile-nav-icon {
-//           animation: navPulse 2s ease-in-out infinite;
-//         }
-
-//         /* Mobile Nav Responsive Adjustments */
-//         @media (max-width: 480px) {
-//           .mobile-nav {
-//             height: 65px;
-//             padding: 0.7rem 0.3rem;
-//           }
-          
-//           .mobile-nav-item {
-//             min-width: 50px;
-//             padding: 0.3rem 0.5rem;
-//             font-size: 0.6rem;
-//           }
-          
-//           .mobile-nav-icon {
-//             font-size: 1.3rem;
-//             margin-bottom: 0.15rem;
-//           }
-//         }
-
-//         @media (max-width: 360px) {
-//           .mobile-nav {
-//             height: 60px;
-//             padding: 0.6rem 0.2rem;
-//           }
-          
-//           .mobile-nav-item {
-//             min-width: 45px;
-//             padding: 0.25rem 0.4rem;
-//             font-size: 0.55rem;
-//           }
-          
-//           .mobile-nav-icon {
-//             font-size: 1.2rem;
-//             margin-bottom: 0.1rem;
-//           }
-//         }
-
-//         /* Ensure content doesn't get hidden behind navbar */
-//         @media (max-width: 768px) {
-//           .main-content {
-//             padding-bottom: 80px !important;
-//           }
-          
-//           .page {
-//             padding-bottom: 2rem !important;
-//           }
-//         }
-
-//         .mobile-nav {
-//           transition: all 0.3s ease;
-//         }
-
-//         .mobile-nav-item {
-//           transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-//         }
-
-//         @media (hover: hover) {
-//           .mobile-nav-item:hover {
-//             transform: translateY(-3px);
-//           }
-//         }
-
-//         /* ===== PAGE LAYOUT WITH HEADER SPACE ===== */
-//         .page {
-//           max-width: 1200px;
-//           margin: 0 auto;
-//           padding: 2rem;
-//           min-height: calc(100vh - 180px);
-//           width: 100%;
-//           overflow-x: hidden;
-//           padding-top: 2rem;
-//         }
-
-//         /* ===== CARDS ===== */
-//         .card-grid {
-//           display: grid;
-//           grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-//           gap: 2rem;
-//           margin-top: 3rem;
-//           width: 100%;
-//         }
-
-//         .card {
-//           background: var(--card-bg);
-//           border-radius: 20px;
-//           padding: 2.5rem;
-//           border: 1px solid var(--border);
-//           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-//           position: relative;
-//           overflow: hidden;
-//           cursor: none;
-//           transform: translateZ(0);
-//           width: 100%;
-//         }
-
-//         .card::before {
-//           content: '';
-//           position: absolute;
-//           top: 0;
-//           left: -100%;
-//           width: 100%;
-//           height: 100%;
-//           background: linear-gradient(90deg, transparent, rgba(66, 133, 244, 0.1), transparent);
-//           transition: left 0.6s ease;
-//         }
-
-//         .card:hover::before {
-//           left: 100%;
-//         }
-
-//         .card:hover {
-//           transform: translateY(-8px) scale(1.02);
-//           border-color: var(--google-blue);
-//           box-shadow: 
-//             0 20px 40px rgba(0, 0, 0, 0.3),
-//             0 0 80px rgba(66, 133, 244, 0.1);
-//         }
-
-//         .card-icon {
-//           font-size: 3.5rem;
-//           margin-bottom: 1.5rem;
-//           display: block;
-//         }
-
-//         /* Micro-interactions */
-//         .hover-reveal {
-//           opacity: 0;
-//           transform: translateY(20px);
-//           transition: all 0.4s ease;
-//         }
-
-//         .card:hover .hover-reveal {
-//           opacity: 1;
-//           transform: translateY(0);
-//         }
-
-//         /* ===== BUTTONS ===== */
-//         .cta-button {
-//           background: linear-gradient(45deg, var(--google-blue), var(--google-green));
-//           color: white;
-//           border: none;
-//           padding: 1.2rem 2.5rem;
-//           border-radius: 30px;
-//           font-size: 1.1rem;
-//           font-weight: 600;
-//           cursor: none;
-//           transition: all 0.3s ease;
-//           position: relative;
-//           overflow: hidden;
-//           width: auto;
-//           display: inline-block;
-//           box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
-//         }
-
-//         .cta-button:hover {
-//           transform: translateY(-3px);
-//           box-shadow: 
-//             0 10px 25px rgba(66, 133, 244, 0.4),
-//             0 0 30px rgba(66, 133, 244, 0.2);
-//         }
-
-//         .cta-button:active {
-//           transform: translateY(-1px);
-//         }
-
-//         /* ===== CONTACT SECTION ===== */
-//         .contact-container {
-//           display: grid;
-//           grid-template-columns: 1fr 1fr;
-//           gap: 3rem;
-//           margin-top: 3rem;
-//           width: 100%;
-//           min-height: 500px;
-//         }
-
-//         .contact-info {
-//           padding: 2.5rem;
-//           width: 100%;
-//           display: flex;
-//           flex-direction: column;
-//           gap: 1.5rem;
-//           background: var(--card-bg);
-//           border-radius: 20px;
-//           border: 1px solid var(--border);
-//         }
-
-//         .contact-form {
-//           background: var(--card-bg);
-//           border-radius: 20px;
-//           padding: 2.5rem;
-//           border: 1px solid var(--border);
-//           display: flex;
-//           flex-direction: column;
-//           width: 100%;
-//           min-height: 500px;
-//         }
-
-//         .form-group {
-//           margin-bottom: 2rem;
-//           width: 100%;
-//         }
-
-//         .form-label {
-//           display: block;
-//           margin-bottom: 0.75rem;
-//           font-weight: 600;
-//           color: var(--text-primary);
-//           width: 100%;
-//           font-size: 1.1rem;
-//         }
-
-//         .form-input,
-//         .form-textarea {
-//           width: 100%;
-//           padding: 1rem;
-//           background: var(--bg-darker) !important;
-//           border: 1px solid var(--border) !important;
-//           border-radius: 12px;
-//           color: var(--text-primary) !important;
-//           font-size: 1rem;
-//           transition: all 0.3s ease;
-//           font-family: inherit;
-//           -webkit-appearance: none;
-//           appearance: none;
-//           resize: vertical;
-//           cursor: text !important;
-//           pointer-events: auto !important;
-//           user-select: text !important;
-//           -webkit-user-select: text !important;
-//           -moz-user-select: text !important;
-//           -ms-user-select: text !important;
-//           opacity: 1 !important;
-//           background-color: var(--bg-darker) !important;
-//         }
-
-//         .form-input:focus,
-//         .form-textarea:focus {
-//           outline: none !important;
-//           border-color: var(--google-blue) !important;
-//           box-shadow: 0 0 0 3px rgba(66, 133, 244, 0.2) !important;
-//           transform: translateY(-2px);
-//           background: var(--bg-darker) !important;
-//         }
-
-//         .form-input:hover,
-//         .form-textarea:hover {
-//           border-color: var(--google-blue) !important;
-//           background: var(--bg-darker) !important;
-//         }
-
-//         .form-input::placeholder,
-//         .form-textarea::placeholder {
-//           color: var(--text-secondary);
-//           opacity: 0.7;
-//         }
-
-//         .form-textarea {
-//           min-height: 140px;
-//           font-family: inherit;
-//           width: 100%;
-//         }
-
-//         .contact-cards {
-//           display: flex;
-//           flex-direction: column;
-//           gap: 1.5rem;
-//           width: 100%;
-//         }
-
-//         .contact-card {
-//           display: flex;
-//           align-items: center;
-//           gap: 1rem;
-//           padding: 1.5rem;
-//           background: rgba(255, 255, 255, 0.05);
-//           border-radius: 16px;
-//           border: 1px solid var(--border);
-//           text-decoration: none;
-//           color: var(--text-primary);
-//           transition: all 0.3s ease;
-//           cursor: pointer;
-//           width: 100%;
-//         }
-
-//         .contact-card:hover {
-//           transform: translateY(-5px);
-//           border-color: var(--google-blue);
-//           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-//           background: rgba(66, 133, 244, 0.1);
-//         }
-
-//         .contact-icon {
-//           font-size: 1.8rem;
-//           flex-shrink: 0;
-//           width: 40px;
-//           text-align: center;
-//         }
-
-//         .contact-content {
-//           flex: 1;
-//           min-width: 0;
-//         }
-
-//         .contact-title {
-//           margin: 0;
-//           color: var(--text-primary);
-//           font-size: 1.1rem;
-//           font-weight: 600;
-//           margin-bottom: 0.3rem;
-//         }
-
-//         .contact-detail {
-//           margin: 0;
-//           color: var(--text-secondary);
-//           font-size: 0.9rem;
-//           overflow: hidden;
-//           text-overflow: ellipsis;
-//           white-space: nowrap;
-//         }
-
-//         .contact-action {
-//           font-size: 0.8rem;
-//           font-weight: 600;
-//           flex-shrink: 0;
-//           color: var(--google-blue);
-//         }
-
-//         .quick-connect {
-//           padding: 1.5rem;
-//           background: rgba(255, 255, 255, 0.05);
-//           border-radius: 12px;
-//           border: 1px solid var(--border);
-//           width: 100%;
-//           margin-top: 1rem;
-//         }
-
-//         .quick-connect-title {
-//           color: var(--google-blue);
-//           margin-bottom: 1rem;
-//           font-size: 1.2rem;
-//         }
-
-//         .quick-connect-details {
-//           display: flex;
-//           flex-direction: column;
-//           gap: 0.5rem;
-//         }
-
-//         .quick-connect-details p {
-//           margin: 0;
-//           font-size: 0.9rem;
-//           color: var(--text-secondary);
-//           line-height: 1.4;
-//         }
-
-//         .status-message {
-//           padding: 1rem;
-//           border-radius: 12px;
-//           margin-bottom: 1rem;
-//           text-align: center;
-//           font-weight: 500;
-//           width: 100%;
-//           border: 1px solid;
-//         }
-
-//         .status-message.success {
-//           background: var(--google-green);
-//           color: white;
-//           border-color: var(--google-green);
-//         }
-
-//         .status-message.error {
-//           background: var(--google-red);
-//           color: white;
-//           border-color: var(--google-red);
-//         }
-
-//         .loading-spinner {
-//           display: inline-block;
-//           width: 20px;
-//           height: 20px;
-//           border: 2px solid transparent;
-//           border-top: 2px solid white;
-//           border-radius: 50%;
-//           animation: spin 1s linear infinite;
-//           margin-right: 10px;
-//         }
-
-//         @keyframes spin {
-//           0% { transform: rotate(0deg); }
-//           100% { transform: rotate(360deg); }
-//         }
-
-//         .form-input:disabled,
-//         .form-textarea:disabled {
-//           opacity: 0.6;
-//           cursor: not-allowed !important;
-//           background: var(--bg-dark) !important;
-//         }
-
-//         .cta-button:disabled {
-//           opacity: 0.7;
-//           cursor: not-allowed !important;
-//           transform: none !important;
-//         }
-
-//         input[type="text"],
-//         input[type="email"],
-//         textarea {
-//           cursor: text !important;
-//           pointer-events: auto !important;
-//           user-select: text !important;
-//           -webkit-user-select: text !important;
-//           -moz-user-select: text !important;
-//           -ms-user-select: text !important;
-//           background: var(--bg-darker) !important;
-//           color: var(--text-primary) !important;
-//           border: 1px solid var(--border) !important;
-//         }
-
-//         /* ===== PARALLAX BACKGROUND ===== */
-//         .parallax-bg {
-//           position: fixed;
-//           top: 0;
-//           left: 0;
-//           width: 100%;
-//           height: 100%;
-//           z-index: -1;
-//           overflow: hidden;
-//         }
-
-//         .parallax-layer {
-//           position: absolute;
-//           width: 120%;
-//           height: 120%;
-//           top: -10%;
-//           left: -10%;
-//         }
-
-//         .layer-1 {
-//           background: radial-gradient(circle at 20% 80%, rgba(66, 133, 244, 0.15) 0%, transparent 50%),
-//                       radial-gradient(circle at 80% 20%, rgba(234, 67, 53, 0.15) 0%, transparent 50%);
-//           transform: translateZ(-100px) scale(2);
-//         }
-
-//         .layer-2 {
-//           background: radial-gradient(circle at 40% 40%, rgba(251, 188, 5, 0.1) 0%, transparent 50%),
-//                       radial-gradient(circle at 60% 60%, rgba(52, 168, 83, 0.1) 0%, transparent 50%);
-//           transform: translateZ(-50px) scale(1.5);
-//         }
-
-//         /* ===== 404 PAGE ===== */
-//         .not-found {
-//           text-align: center;
-//           padding: 8rem 2rem;
-//           min-height: 80vh;
-//           display: flex;
-//           flex-direction: column;
-//           justify-content: center;
-//           width: 100%;
-//         }
-
-//         .not-found h1 {
-//           font-size: 8rem;
-//           color: var(--google-red);
-//           margin-bottom: 1rem;
-//         }
-
-//         .not-found h2 {
-//           font-size: 2rem;
-//           margin-bottom: 1rem;
-//         }
-
-//         .not-found p {
-//           font-size: 1.2rem;
-//           color: var(--text-secondary);
-//           margin-bottom: 2rem;
-//         }
-
-//         /* ===== ANIMATIONS ===== */
-//         @keyframes float {
-//           0%, 100% { transform: translateY(0px) rotate(0deg); }
-//           33% { transform: translateY(-15px) rotate(2deg); }
-//           66% { transform: translateY(-8px) rotate(-1deg); }
-//         }
-
-//         @keyframes rotate {
-//           0% { transform: rotate(0deg); }
-//           100% { transform: rotate(360deg); }
-//         }
-
-//         @keyframes pulse-glow {
-//           0%, 100% { opacity: 0.5; transform: scale(1); }
-//           50% { opacity: 0.8; transform: scale(1.05); }
-//         }
-
-//         @keyframes slideInLeft {
-//           from {
-//             transform: translateX(-100px);
-//             opacity: 0;
-//           }
-//           to {
-//             transform: translateX(0);
-//             opacity: 1;
-//           }
-//         }
-
-//         @keyframes slideInRight {
-//           from {
-//             transform: translateX(100px);
-//             opacity: 0;
-//           }
-//           to {
-//             transform: translateX(0);
-//             opacity: 1;
-//           }
-//         }
-
-//         /* ===== SCROLLBAR ===== */
-//         ::-webkit-scrollbar {
-//           width: 10px;
-//         }
-
-//         ::-webkit-scrollbar-track {
-//           background: var(--bg-darker);
-//         }
-
-//         ::-webkit-scrollbar-thumb {
-//           background: linear-gradient(45deg, var(--google-blue), var(--google-green));
-//           border-radius: 5px;
-//         }
-
-//         ::-webkit-scrollbar-thumb:hover {
-//           background: linear-gradient(45deg, var(--google-green), var(--google-blue));
-//         }
-
-//         /* ===== ACCESSIBILITY ===== */
-//         ::selection {
-//           background: var(--google-blue);
-//           color: white;
-//         }
-
-//         ::-moz-selection {
-//           background: var(--google-blue);
-//           color: white;
-//         }
-
-//         button:focus,
-//         .nav-item:focus,
-//         .cta-button:focus,
-//         .form-input:focus,
-//         .form-textarea:focus {
-//           outline: 2px solid var(--google-blue);
-//           outline-offset: 3px;
-//         }
-
-//         /* ===== INSTAGRAM GRADIENT ===== */
-//         .instagram-gradient {
-//           background: linear-gradient(
-//             45deg,
-//             #405DE6,
-//             #5851DB,
-//             #833AB4,
-//             #C13584,
-//             #E1306C,
-//             #FD1D1D,
-//             #F56040,
-//             #F77737,
-//             #FCAF45,
-//             #FFDC80
-//           ) !important;
-//           background-size: 400% 400% !important;
-//           animation: instagramGradient 3s ease infinite !important;
-//         }
-
-//         @keyframes instagramGradient {
-//           0% {
-//             background-position: 0% 50%;
-//           }
-//           50% {
-//             background-position: 100% 50%;
-//           }
-//           100% {
-//             background-position: 0% 50%;
-//           }
-//         }
-
-//         /* ===== RESPONSIVE DESIGN ===== */
-//         @media (min-width: 1201px) {
-//           .page {
-//             max-width: 1400px;
-//           }
-          
-//           .hero-text h1 {
-//             font-size: 4rem;
-//           }
-//         }
-
-//         @media (min-width: 1025px) {
-//           .contact-container {
-//             grid-template-columns: 1fr 1fr;
-//           }
-//         }
-
-//         @media (max-width: 1024px) and (min-width: 769px) {
-//           .hero-content {
-//             grid-template-columns: 1fr 1fr;
-//             gap: 3rem;
-//           }
-          
-//           .contact-container {
-//             grid-template-columns: 1fr 1fr;
-//             gap: 2rem;
-//           }
-          
-//           .hero-text h1 {
-//             font-size: 3rem;
-//           }
-          
-//           .profile-photo-container {
-//             width: 280px;
-//             height: 280px;
-//           }
-//         }
-
-//         @media (max-width: 768px) {
-//           body {
-//             cursor: auto !important;
-//           }
-          
-//           .cursor-segment {
-//             display: none !important;
-//           }
-          
-//           .main-content {
-//             padding: 1rem;
-//             padding-bottom: 80px;
-//             padding-top: 90px;
-//           }
-          
-//           .header {
-//             padding: 1rem 1.5rem;
-//             height: 70px;
-//           }
-          
-//           .nav {
-//             gap: 1.5rem;
-//           }
-          
-//           .nav-item {
-//             padding: 0.6rem 1.2rem;
-//             font-size: 1rem;
-//           }
-
-//           .hero-image-mobile {
-//             display: flex;
-//             margin-bottom: 2rem;
-//           }
-          
-//           .hero-image-desktop {
-//             display: none;
-//           }
-
-//           .hero-content {
-//             grid-template-columns: 1fr;
-//             gap: 2rem;
-//             min-height: auto;
-//           }
-
-//           .hero-text h1 {
-//             font-size: 2.5rem;
-//             text-align: center;
-//           }
-
-//           .hero-text p {
-//             font-size: 1.2rem;
-//             text-align: center;
-//           }
-
-//           .hero-stats {
-//             flex-direction: row;
-//             gap: 1rem;
-//             justify-content: center;
-//             flex-wrap: wrap;
-//           }
-          
-//           .stat-item {
-//             flex: 1;
-//             min-width: 120px;
-//             padding: 0.8rem;
-//           }
-          
-//           .stat-number {
-//             font-size: 1.5rem;
-//           }
-          
-//           .stat-label {
-//             font-size: 0.75rem;
-//           }
-
-//           .page {
-//             padding: 1rem;
-//             min-height: calc(100vh - 160px);
-//           }
-          
-//           .card-grid {
-//             grid-template-columns: 1fr;
-//             gap: 1.5rem;
-//           }
-          
-//           .card {
-//             padding: 2rem;
-//           }
-          
-//           .contact-container {
-//             grid-template-columns: 1fr;
-//             gap: 2rem;
-//             margin-top: 2rem;
-//             width: 100%;
-//             display: flex;
-//             flex-direction: column;
-//           }
-          
-//           .contact-info,
-//           .contact-form {
-//             padding: 1.5rem;
-//             width: 100%;
-//             min-height: auto;
-//           }
-          
-//           .contact-info {
-//             order: 2;
-//           }
-          
-//           .contact-form {
-//             order: 1;
-//           }
-          
-//           .contact-card {
-//             padding: 1.2rem;
-//             gap: 0.8rem;
-//           }
-          
-//           .contact-icon {
-//             font-size: 1.5rem;
-//             width: 35px;
-//           }
-          
-//           .contact-title {
-//             font-size: 1rem;
-//           }
-          
-//           .contact-detail {
-//             font-size: 0.85rem;
-//           }
-          
-//           .quick-connect {
-//             padding: 1.2rem;
-//           }
-          
-//           .not-found {
-//             padding: 4rem 1rem;
-//           }
-          
-//           .not-found h1 {
-//             font-size: 5rem;
-//           }
-          
-//           .not-found h2 {
-//             font-size: 1.5rem;
-//           }
-
-//           a, button, .nav-item, .cta-button, .card, .mobile-nav-item,
-//           .form-input, .form-textarea, .stat-item, .profile-photo {
-//             cursor: pointer !important;
-//           }
-//         }
-
-//         @media (max-width: 480px) {
-//           .hero-text h1 {
-//             font-size: 2rem;
-//           }
-
-//           .hero-text p {
-//             font-size: 1rem;
-//           }
-
-//           .hero-stats {
-//             flex-direction: column;
-//             gap: 0.8rem;
-//           }
-          
-//           .stat-item {
-//             width: 100%;
-//             max-width: 200px;
-//             margin: 0 auto;
-//           }
-          
-//           .stat-number {
-//             font-size: 1.3rem;
-//           }
-          
-//           .page {
-//             padding: 0.5rem;
-//           }
-          
-//           .card {
-//             padding: 1.5rem;
-//           }
-          
-//           .card-grid {
-//             gap: 1rem;
-//           }
-          
-//           .contact-container {
-//             gap: 1.5rem;
-//             margin-top: 1.5rem;
-//           }
-          
-//           .contact-info,
-//           .contact-form {
-//             padding: 1rem;
-//             border-radius: 16px;
-//           }
-          
-//           .contact-form {
-//             padding: 1.2rem;
-//           }
-          
-//           .form-group {
-//             margin-bottom: 1.5rem;
-//           }
-          
-//           .form-input,
-//           .form-textarea {
-//             padding: 0.8rem;
-//             font-size: 0.9rem;
-//           }
-          
-//           .contact-card {
-//             padding: 1rem;
-//           }
-          
-//           .contact-icon {
-//             font-size: 1.3rem;
-//             width: 30px;
-//           }
-          
-//           .mobile-nav {
-//             padding: 0.75rem;
-//             height: 65px;
-//           }
-          
-//           .mobile-nav-item {
-//             font-size: 0.7rem;
-//             padding: 0.5rem;
-//             min-width: 50px;
-//           }
-          
-//           .mobile-nav-icon {
-//             font-size: 1.2rem;
-//           }
-//         }
-
-//         @media (max-width: 360px) {
-//           .hero-text h1 {
-//             font-size: 1.8rem;
-//           }
-
-//           .hero-text p {
-//             font-size: 0.9rem;
-//           }
-          
-//           .page {
-//             padding: 0.25rem;
-//           }
-          
-//           .contact-info,
-//           .contact-form {
-//             padding: 0.75rem;
-//           }
-          
-//           .contact-form {
-//             padding: 1rem;
-//           }
-          
-//           .card {
-//             padding: 1rem;
-//           }
-          
-//           .header {
-//             padding: 0.8rem 1rem;
-//           }
-          
-//           .nav {
-//             gap: 1rem;
-//           }
-          
-//           .nav-item {
-//             padding: 0.5rem 1rem;
-//             font-size: 0.9rem;
-//           }
-          
-//           .contact-card {
-//             padding: 0.8rem;
-//             gap: 0.6rem;
-//           }
-          
-//           .contact-icon {
-//             font-size: 1.2rem;
-//             width: 25px;
-//           }
-          
-//           .contact-title {
-//             font-size: 0.9rem;
-//           }
-          
-//           .contact-detail {
-//             font-size: 0.8rem;
-//           }
-//         }
-
-//         /* ===== CURSOR FIXES ===== */
-//         @media (min-width: 769px) {
-//           body {
-//             cursor: none !important;
-//           }
-          
-//           a, button, .nav-item, .cta-button, .card, .mobile-nav-item,
-//           .form-input, .form-textarea, .stat-item, .profile-photo {
-//             cursor: none !important;
-//           }
-//         }
-
-//         input:focus, textarea:focus {
-//           cursor: text !important;
-//         }
-
-//         @media (max-width: 768px) {
-//           body {
-//             -webkit-overflow-scrolling: touch;
-//           }
-          
-//           .main-content {
-//             overflow-y: auto;
-//           }
-//         }
-
-//         /* GitHub Specific Styles */
-//         .github-hover:hover {
-//           border-color: var(--text-primary) !important;
-//           box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1) !important;
-//         }
-
-//         .social-github {
-//           background: var(--bg-darker) !important;
-//           border: 1px solid var(--border) !important;
-//           color: var(--text-primary) !important;
-//           transition: all 0.3s ease !important;
-//         }
-
-//         .social-github:hover {
-//           background: var(--card-bg) !important;
-//           border-color: var(--text-primary) !important;
-//         }
-
-//         /* Ensure no horizontal scroll on any device */
-//         html, body {
-//           max-width: 100%;
-//           overflow-x: hidden;
-//         }
-
-//         * {
-//           box-sizing: border-box;
-//         }
-
-//         /* Force contact section to be visible */
-//         .contact-section {
-//           width: 100% !important;
-//           visibility: visible !important;
-//           opacity: 1 !important;
-//           display: block !important;
-//         }
-
-//         /* ULTRA FIX: Force form inputs to be always editable */
-//         input.form-input, textarea.form-textarea {
-//           -webkit-user-select: text !important;
-//           -moz-user-select: text !important;
-//           -ms-user-select: text !important;
-//           user-select: text !important;
-//           pointer-events: auto !important;
-//           cursor: text !important;
-//           background: var(--bg-darker) !important;
-//           color: var(--text-primary) !important;
-//           border: 1px solid var(--border) !important;
-//         }
-
-//         /* ===== SOCIAL LINKS SECTION ===== */
-//         .social-links-section {
-//           margin-top: 2rem;
-//           padding-top: 2rem;
-//           border-top: 1px solid var(--border);
-//         }
-
-//         .social-divider {
-//           text-align: center;
-//           margin-bottom: 1.5rem;
-//           position: relative;
-//         }
-
-//         .social-divider span {
-//           background: var(--card-bg);
-//           padding: 0 1rem;
-//           color: var(--text-secondary);
-//           font-size: 0.9rem;
-//           position: relative;
-//           z-index: 2;
-//         }
-
-//         .social-divider::before {
-//           content: '';
-//           position: absolute;
-//           top: 50%;
-//           left: 0;
-//           right: 0;
-//           height: 1px;
-//           background: var(--border);
-//           z-index: 1;
-//         }
-
-//         .social-links-grid {
-//           display: grid;
-//           grid-template-columns: repeat(2, 1fr);
-//           gap: 1rem;
-//         }
-
-//         .social-link {
-//           display: flex;
-//           flex-direction: column;
-//           align-items: center;
-//           justify-content: center;
-//           padding: 1rem;
-//           background: rgba(255, 255, 255, 0.05);
-//           border: 1px solid var(--border);
-//           border-radius: 12px;
-//           text-decoration: none;
-//           color: var(--text-primary);
-//           transition: all 0.3s ease;
-//           cursor: pointer;
-//           min-height: 80px;
-//         }
-
-//         .social-link:hover {
-//           background: rgba(255, 255, 255, 0.1);
-//           border-color: var(--social-color);
-//           transform: translateY(-2px);
-//           box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-//         }
-
-//         .social-icon {
-//           font-size: 1.8rem;
-//           margin-bottom: 0.5rem;
-//           transition: transform 0.3s ease;
-//         }
-
-//         .social-link:hover .social-icon {
-//           transform: scale(1.2);
-//         }
-
-//         .social-label {
-//           font-size: 0.8rem;
-//           font-weight: 600;
-//           color: var(--text-secondary);
-//           transition: color 0.3s ease;
-//         }
-
-//         .social-link:hover .social-label {
-//           color: var(--social-color);
-//         }
-
-//         /* Google Logo Color Styles */
-//         .google-gradient-text {
-//           font-weight: 700;
-//           letter-spacing: -0.5px;
-//         }
-
-//         .google-blue { color: #4285F4 !important; }
-//         .google-red { color: #EA4335 !important; }
-//         .google-yellow { color: #FBBC05 !important; }
-//         .google-green { color: #34A853 !important; }
-
-//         .google-gradient-bg {
-//           background: linear-gradient(45deg, #4285F4, #EA4335, #FBBC05, #34A853) !important;
-//           background-size: 300% 300% !important;
-//           animation: googleGradient 3s ease infinite !important;
-//           border: none !important;
-//           color: white !important;
-//           font-weight: 600 !important;
-//         }
-
-//         .google-gradient-bg:hover {
-//           transform: translateY(-3px);
-//           box-shadow: 
-//             0 10px 25px rgba(66, 133, 244, 0.4),
-//             0 0 30px rgba(234, 67, 53, 0.3),
-//             0 0 40px rgba(251, 188, 5, 0.2),
-//             0 0 50px rgba(52, 168, 83, 0.1) !important;
-//         }
-
-//         @keyframes googleGradient {
-//           0% { background-position: 0% 50%; }
-//           50% { background-position: 100% 50%; }
-//           100% { background-position: 0% 50%; }
-//         }
-
-//         /* Custom Cursor Styles */
-//         .custom-cursor {
-//           position: fixed;
-//           top: 0;
-//           left: 0;
-//           width: 16px;
-//           height: 16px;
-//           background: #4285F4;
-//           border-radius: 50%;
-//           pointer-events: none;
-//           z-index: 9999;
-//           mix-blend-mode: difference;
-//           transition: background-color 0.2s ease;
-//         }
-
-//         /* Force cursor on all interactive elements */
-//         button, a, .nav-item, .cta-button, .card, 
-//         .mobile-nav-item, .form-input, .form-textarea, 
-//         .stat-item, .contact-card, input, textarea,
-//         [role="button"], .social-link {
-//           cursor: none !important;
-//         }
-
-//         .space { margin: 0 2px; }
-
-//         .google-gradient-text {
-//           font-weight: 700;
-//           letter-spacing: -0.5px;
-//           display: inline-block;
-//         }
-
-//         /* ===== PROJECTS PAGE SPECIFIC STYLES ===== */
-//         .projects-section {
-//           padding-bottom: 2rem;
-//         }
-
-//         .projects-header {
-//           text-align: center;
-//           margin-bottom: 3rem;
-//         }
-
-//         .projects-header h1 {
-//           font-size: 3.5rem;
-//           margin-bottom: 1rem;
-//         }
-
-//         .projects-subtitle {
-//           font-size: 1.3rem;
-//           color: var(--text-secondary);
-//           margin-top: 1rem;
-//           line-height: 1.6;
-//         }
-
-//         .projects-container {
-//           width: 100%;
-//           max-width: 1200px;
-//           margin: 0 auto;
-//         }
-
-//         .projects-grid {
-//           display: grid;
-//           grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-//           gap: 2rem;
-//           margin-bottom: 3rem;
-//         }
-
-//         .project-card {
-//           background: var(--card-bg);
-//           border-radius: 20px;
-//           padding: 2.5rem;
-//           border: 1px solid var(--border);
-//           transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-//           position: relative;
-//           overflow: hidden;
-//           transform: translateZ(0);
-//           cursor: none;
-//         }
-
-//         .project-card:hover {
-//           transform: translateY(-8px) scale(1.02);
-//           border-color: var(--google-blue);
-//           box-shadow: 
-//             0 20px 40px rgba(0, 0, 0, 0.3),
-//             0 0 80px rgba(66, 133, 244, 0.1);
-//         }
-
-//         .project-header {
-//           display: flex;
-//           align-items: flex-start;
-//           gap: 1rem;
-//           margin-bottom: 1.5rem;
-//         }
-
-//         .project-icon {
-//           font-size: 2.5rem;
-//           flex-shrink: 0;
-//           transition: transform 0.3s ease;
-//         }
-
-//         .project-card:hover .project-icon {
-//           transform: scale(1.1) rotate(5deg);
-//         }
-
-//         .project-title-section {
-//           flex: 1;
-//           min-width: 0;
-//         }
-
-//         .project-title {
-//           font-size: 1.4rem;
-//           font-weight: 700;
-//           margin-bottom: 0.5rem;
-//           background: linear-gradient(45deg, var(--google-blue), var(--google-green));
-//           -webkit-background-clip: text;
-//           background-clip: text;
-//           -webkit-text-fill-color: transparent;
-//           line-height: 1.3;
-//         }
-
-//         .project-status {
-//           display: inline-block;
-//           padding: 0.3rem 1rem;
-//           border-radius: 20px;
-//           color: white;
-//           font-size: 0.8rem;
-//           font-weight: 600;
-//           text-transform: uppercase;
-//           letter-spacing: 0.5px;
-//         }
-
-//         .project-description {
-//           color: var(--text-secondary);
-//           line-height: 1.6;
-//           margin-bottom: 1.5rem;
-//           font-size: 1rem;
-//         }
-
-//         .project-tech {
-//           display: flex;
-//           flex-wrap: wrap;
-//           gap: 0.5rem;
-//         }
-
-//         .tech-tag {
-//           padding: 0.4rem 1rem;
-//           border: 1.5px solid;
-//           border-radius: 12px;
-//           font-size: 0.8rem;
-//           font-weight: 600;
-//           background: rgba(255, 255, 255, 0.05);
-//           transition: all 0.3s ease;
-//         }
-
-//         .project-card:hover .tech-tag {
-//           background: rgba(255, 255, 255, 0.1);
-//           transform: translateY(-2px);
-//         }
-
-//         .project-glow {
-//           position: absolute;
-//           top: 0;
-//           left: 0;
-//           right: 0;
-//           bottom: 0;
-//           opacity: 0;
-//           transition: opacity 0.3s ease;
-//           pointer-events: none;
-//           z-index: -1;
-//         }
-
-//         .project-card:hover .project-glow {
-//           opacity: 1;
-//         }
-
-//         .projects-stats {
-//           display: grid;
-//           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-//           gap: 2rem;
-//           margin-top: 3rem;
-//           padding: 2rem;
-//           background: var(--card-bg);
-//           border-radius: 20px;
-//           border: 1px solid var(--border);
-//         }
-
-//         .projects-stats .stat-item {
-//           text-align: center;
-//           padding: 1.5rem;
-//           border-radius: 16px;
-//           border: 1px solid var(--border);
-//           transition: all 0.3s ease;
-//           cursor: none;
-//         }
-
-//         .projects-stats .stat-item:hover {
-//           transform: translateY(-5px);
-//           border-color: var(--google-blue);
-//           box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
-//         }
-
-//         .projects-stats .stat-number {
-//           font-size: 2.5rem;
-//           font-weight: 700;
-//           margin-bottom: 0.5rem;
-//           background: linear-gradient(45deg, var(--google-blue), var(--google-green));
-//           -webkit-background-clip: text;
-//           background-clip: text;
-//           -webkit-text-fill-color: transparent;
-//         }
-
-//         .projects-stats .stat-label {
-//           color: var(--text-secondary);
-//           font-size: 0.9rem;
-//           font-weight: 600;
-//           text-transform: uppercase;
-//           letter-spacing: 0.5px;
-//         }
-
-//         /* Projects Page Mobile Responsive */
-//         @media (max-width: 768px) {
-//           .projects-grid {
-//             grid-template-columns: 1fr;
-//             gap: 1.5rem;
-//           }
-
-//           .project-card {
-//             padding: 2rem;
-//           }
-
-//           .project-header {
-//             flex-direction: column;
-//             text-align: center;
-//             gap: 0.5rem;
-//           }
-
-//           .project-icon {
-//             align-self: center;
-//           }
-
-//           .projects-stats {
-//             grid-template-columns: 1fr;
-//             gap: 1.5rem;
-//             padding: 1.5rem;
-//           }
-
-//           .projects-subtitle {
-//             font-size: 1.1rem;
-//           }
-
-//           .projects-header h1 {
-//             font-size: 2.5rem;
-//           }
-//         }
-
-//         @media (max-width: 480px) {
-//           .project-card {
-//             padding: 1.5rem;
-//           }
-
-//           .projects-grid {
-//             grid-template-columns: 1fr;
-//           }
-
-//           .project-title {
-//             font-size: 1.2rem;
-//           }
-
-//           .project-description {
-//             font-size: 0.9rem;
-//           }
-
-//           .tech-tag {
-//             font-size: 0.75rem;
-//             padding: 0.3rem 0.8rem;
-//           }
-
-//           .projects-stats .stat-item {
-//             padding: 1rem;
-//           }
-
-//           .projects-stats .stat-number {
-//             font-size: 2rem;
-//           }
-
-//           .projects-header h1 {
-//             font-size: 2rem;
-//           }
-//         }
-
-//         /* Social Links Mobile Responsive */
-//         @media (max-width: 768px) {
-//           .social-links-grid {
-//             grid-template-columns: repeat(4, 1fr);
-//             gap: 0.5rem;
-//           }
-
-//           .social-link {
-//             padding: 0.8rem 0.5rem;
-//             min-height: 70px;
-//           }
-
-//           .social-icon {
-//             font-size: 1.5rem;
-//             margin-bottom: 0.3rem;
-//           }
-
-//           .social-label {
-//             font-size: 0.7rem;
-//           }
-//         }
-
-//         @media (max-width: 480px) {
-//           .social-links-grid {
-//             grid-template-columns: repeat(2, 1fr);
-//             gap: 0.8rem;
-//           }
-
-//           .social-link {
-//             padding: 1rem;
-//             min-height: 75px;
-//           }
-
-//           .social-icon {
-//             font-size: 1.6rem;
-//           }
-
-//           .social-label {
-//             font-size: 0.75rem;
-//           }
-//         }
-//       `}</style>
-//     </div>
-//   );
-// };
-
-// export default Projects;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { createPortal } from 'react-dom';
 import useSound from '../hooks/useSound';
 
 const Projects = () => {
@@ -2078,17 +8,44 @@ const Projects = () => {
   const [filter, setFilter] = useState('All');
   const [selectedProject, setSelectedProject] = useState(null);
 
-  // Prevent body scroll when modal is open
+  // Lock body scroll when modal is open
   useEffect(() => {
     if (selectedProject) {
+      const scrollY = window.scrollY;
+      document.body.style.position = 'fixed';
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = '100%';
       document.body.style.overflow = 'hidden';
+      document.body.classList.add('modal-open');
     } else {
-      document.body.style.overflow = 'unset';
+      const scrollY = document.body.style.top;
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      document.body.classList.remove('modal-open');
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
     }
     return () => {
-      document.body.style.overflow = 'unset';
+      document.body.style.position = '';
+      document.body.style.top = '';
+      document.body.style.width = '';
+      document.body.style.overflow = '';
+      document.body.classList.remove('modal-open');
     };
   }, [selectedProject]);
+
+  // ESC key to close modal
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === 'Escape' && selectedProject) {
+        setSelectedProject(null);
+        playClick();
+      }
+    };
+    window.addEventListener('keydown', handleEsc);
+    return () => window.removeEventListener('keydown', handleEsc);
+  }, [selectedProject, playClick]);
 
   const projects = [
     {
@@ -2124,7 +81,7 @@ const Projects = () => {
       icon: '📊',
       color: '#FBBC05',
       gradient: 'linear-gradient(135deg, #FBBC05, #EA4335)',
-      link: '#',
+      link: 'https://profittrrade.vercel.app',
       github: 'https://github.com/Gaurav009git',
       features: [
         'Income & expense tracking',
@@ -2347,30 +304,29 @@ const Projects = () => {
 
   const filters = ['All', 'Full Stack', 'Frontend', 'Backend'];
 
-  const filteredProjects = filter === 'All' 
-    ? projects 
-    : projects.filter(project => project.category === filter);
+  const filteredProjects = useMemo(() => 
+    filter === 'All' 
+      ? projects 
+      : projects.filter(project => project.category === filter),
+    [filter]
+  );
 
-  const stats = {
+  const stats = useMemo(() => ({
     completed: projects.filter(p => p.status === 'Completed').length,
     inProgress: projects.filter(p => p.status === 'In Progress').length,
     planning: projects.filter(p => p.status === 'Planning').length,
     totalTechnologies: [...new Set(projects.flatMap(p => p.tech))].length
-  };
+  }), []);
 
-  const handleProjectClick = (project) => {
+  const handleProjectClick = useCallback((project) => {
     playClick();
     setSelectedProject(project);
-  };
+  }, [playClick]);
 
-  const handleProjectHover = () => {
-    playHover();
-  };
-
-  const closeModal = () => {
+  const closeModal = useCallback(() => {
     playClick();
     setSelectedProject(null);
-  };
+  }, [playClick]);
 
   const getStatusColor = (status) => {
     switch (status) {
@@ -2381,10 +337,153 @@ const Projects = () => {
     }
   };
 
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2
+      }
+    }
+  };
+
+  const cardVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 50,
+      scale: 0.9,
+      rotateX: 10
+    },
+    visible: { 
+      opacity: 1, 
+      y: 0,
+      scale: 1,
+      rotateX: 0,
+      transition: {
+        type: "spring",
+        stiffness: 100,
+        damping: 12,
+        mass: 0.5
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      scale: 0.8,
+      y: 50,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    },
+    hover: {
+      y: -15,
+      scale: 1.03,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    },
+    tap: {
+      scale: 0.97,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    }
+  };
+
+  const statVariants = {
+    hidden: { 
+      opacity: 0, 
+      y: 30,
+      scale: 0.8
+    },
+    visible: (i) => ({
+      opacity: 1,
+      y: 0,
+      scale: 1,
+      transition: {
+        delay: i * 0.1,
+        type: "spring",
+        stiffness: 200,
+        damping: 15
+      }
+    }),
+    hover: {
+      scale: 1.08,
+      y: -8,
+      transition: {
+        type: "spring",
+        stiffness: 400,
+        damping: 10
+      }
+    }
+  };
+
+  const modalOverlayVariants = {
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { duration: 0.3 }
+    },
+    exit: { 
+      opacity: 0,
+      transition: { duration: 0.2 }
+    }
+  };
+
+  const modalContentVariants = {
+    hidden: { 
+      opacity: 0, 
+      scale: 0.7,
+      y: 100,
+      rotateX: 15
+    },
+    visible: { 
+      opacity: 1, 
+      scale: 1,
+      y: 0,
+      rotateX: 0,
+      transition: {
+        type: "spring",
+        stiffness: 300,
+        damping: 25,
+        mass: 0.8
+      }
+    },
+    exit: { 
+      opacity: 0, 
+      scale: 0.8,
+      y: 50,
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut"
+      }
+    }
+  };
+
+  const featureItemVariants = {
+    hidden: { opacity: 0, x: -20 },
+    visible: (i) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        delay: i * 0.05,
+        type: "spring",
+        stiffness: 300,
+        damping: 20
+      }
+    })
+  };
+
   const GoogleText = ({ text, className = '' }) => (
     <span className={`google-gradient-text ${className}`}>
       {text.split('').map((char, index) => (
-        <span 
+        <motion.span 
           key={index}
           className={
             char === ' ' ? 'space' :
@@ -2392,9 +491,17 @@ const Projects = () => {
             index % 4 === 1 ? 'google-red' :
             index % 4 === 2 ? 'google-yellow' : 'google-green'
           }
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ 
+            delay: index * 0.05,
+            type: "spring",
+            stiffness: 200,
+            damping: 10
+          }}
         >
           {char}
-        </span>
+        </motion.span>
       ))}
     </span>
   );
@@ -2402,9 +509,11 @@ const Projects = () => {
   return (
     <div className="projects-page">
       <style>{`
-        /* ===== COMPLETE PROJECTS PAGE STYLES ===== */
-        
-        :root {
+        * {
+          box-sizing: border-box;
+        }
+
+        .projects-page {
           --google-blue: #4285F4;
           --google-red: #EA4335;
           --google-yellow: #FBBC05;
@@ -2419,16 +528,75 @@ const Projects = () => {
 
         .projects-page {
           min-height: 100vh;
-          padding: 2rem;
           max-width: 1400px;
           margin: 0 auto;
-          padding-top: 100px;
+          padding: 6rem 2rem 3rem;
+          position: relative;
+          overflow: hidden;
         }
 
-        /* Header Styles */
+        /* Animated background gradient */
+        .projects-page::before {
+          content: '';
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: 
+            radial-gradient(circle at 20% 50%, rgba(66, 133, 244, 0.08) 0%, transparent 50%),
+            radial-gradient(circle at 80% 20%, rgba(234, 67, 53, 0.05) 0%, transparent 50%),
+            radial-gradient(circle at 50% 80%, rgba(52, 168, 83, 0.06) 0%, transparent 50%);
+          pointer-events: none;
+          z-index: 0;
+          animation: backgroundShift 20s ease-in-out infinite alternate;
+        }
+
+        @keyframes backgroundShift {
+          0% {
+            opacity: 0.5;
+            transform: scale(1);
+          }
+          50% {
+            opacity: 0.8;
+            transform: scale(1.1);
+          }
+          100% {
+            opacity: 0.5;
+            transform: scale(1);
+          }
+        }
+
+        .projects-page > * {
+          position: relative;
+          z-index: 1;
+        }
+
+        /* CURSOR FIX: Ensure custom cursor is always on top */
+        .custom-cursor {
+          z-index: 999999 !important;
+          position: fixed !important;
+          pointer-events: none !important;
+        }
+
+        body.has-custom-cursor,
+        body.has-custom-cursor * {
+          cursor: none !important;
+        }
+
+        .modal-overlay {
+          z-index: 99999 !important;
+        }
+
+        .modal-content {
+          z-index: 99999 !important;
+        }
+
+        /* Header */
         .projects-header {
           text-align: center;
           margin-bottom: 3rem;
+          position: relative;
         }
 
         .projects-header h1 {
@@ -2436,30 +604,54 @@ const Projects = () => {
           font-weight: 800;
           margin-bottom: 1rem;
           letter-spacing: -1px;
+          color: var(--text-primary);
+          position: relative;
+          display: inline-block;
+        }
+
+        .projects-header h1::after {
+          content: '';
+          position: absolute;
+          bottom: -10px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 100px;
+          height: 4px;
+          background: linear-gradient(90deg, 
+            var(--google-blue), 
+            var(--google-red), 
+            var(--google-yellow), 
+            var(--google-green)
+          );
+          border-radius: 2px;
+          animation: underlineWidth 3s ease-in-out infinite;
+        }
+
+        @keyframes underlineWidth {
+          0%, 100% { width: 100px; }
+          50% { width: 200px; }
         }
 
         .projects-subtitle {
           font-size: 1.2rem;
           color: var(--text-secondary);
           max-width: 600px;
-          margin: 0 auto;
+          margin: 1.5rem auto 0;
           line-height: 1.6;
         }
 
-        /* Google Gradient Text */
         .google-gradient-text {
           font-weight: 700;
           letter-spacing: -0.5px;
           display: inline-block;
         }
-
-        .google-blue { color: #4285F4 !important; }
-        .google-red { color: #EA4335 !important; }
-        .google-yellow { color: #FBBC05 !important; }
-        .google-green { color: #34A853 !important; }
+        .google-blue { color: #4285F4; }
+        .google-red { color: #EA4335; }
+        .google-yellow { color: #FBBC05; }
+        .google-green { color: #34A853; }
         .space { margin: 0 2px; }
 
-        /* Filter Buttons */
+        /* Filter */
         .filter-container {
           display: flex;
           justify-content: center;
@@ -2475,10 +667,30 @@ const Projects = () => {
           background: var(--card-bg);
           color: var(--text-secondary);
           font-weight: 600;
-          cursor: pointer;
           transition: all 0.3s ease;
           font-size: 0.9rem;
           white-space: nowrap;
+          cursor: pointer;
+          position: relative;
+          overflow: hidden;
+        }
+
+        .filter-button::before {
+          content: '';
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          width: 0;
+          height: 0;
+          background: rgba(66, 133, 244, 0.1);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          transition: width 0.6s, height 0.6s;
+        }
+
+        .filter-button:hover::before {
+          width: 300px;
+          height: 300px;
         }
 
         .filter-button:hover {
@@ -2493,6 +705,12 @@ const Projects = () => {
           color: white;
           border-color: transparent;
           box-shadow: 0 5px 20px rgba(66, 133, 244, 0.3);
+          animation: activePulse 2s ease-in-out infinite;
+        }
+
+        @keyframes activePulse {
+          0%, 100% { box-shadow: 0 5px 20px rgba(66, 133, 244, 0.3); }
+          50% { box-shadow: 0 5px 30px rgba(66, 133, 244, 0.5); }
         }
 
         /* Empty State */
@@ -2514,14 +732,16 @@ const Projects = () => {
           font-weight: 500;
         }
 
-        /* Projects Grid */
+        /* Grid */
         .projects-grid {
           display: grid;
           grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
           gap: 2rem;
           margin-bottom: 4rem;
+          perspective: 1000px;
         }
 
+        /* Card */
         .project-card {
           background: var(--card-bg);
           border-radius: 20px;
@@ -2531,6 +751,7 @@ const Projects = () => {
           position: relative;
           overflow: hidden;
           cursor: pointer;
+          transform-style: preserve-3d;
         }
 
         .project-card::before {
@@ -2543,16 +764,39 @@ const Projects = () => {
           background: var(--gradient, linear-gradient(45deg, #4285F4, #34A853));
           opacity: 0;
           transition: opacity 0.3s ease;
+          z-index: 1;
         }
 
         .project-card:hover::before {
           opacity: 1;
         }
 
+        .project-card::after {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: -100%;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.05),
+            transparent
+          );
+          transition: left 0.5s;
+          z-index: 0;
+        }
+
+        .project-card:hover::after {
+          left: 100%;
+        }
+
         .project-card:hover {
-          transform: translateY(-8px);
           border-color: var(--google-blue);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+          box-shadow: 
+            0 20px 40px rgba(0, 0, 0, 0.3),
+            0 0 80px rgba(66, 133, 244, 0.1);
         }
 
         .project-header {
@@ -2560,13 +804,15 @@ const Projects = () => {
           align-items: flex-start;
           gap: 1rem;
           margin-bottom: 1.5rem;
+          position: relative;
+          z-index: 1;
         }
 
         .project-icon {
           font-size: 3rem;
           flex-shrink: 0;
           transition: transform 0.3s ease;
-          filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.1));
+          filter: drop-shadow(0 5px 15px rgba(0, 0, 0, 0.3));
         }
 
         .project-card:hover .project-icon {
@@ -2586,6 +832,8 @@ const Projects = () => {
           -webkit-background-clip: text;
           background-clip: text;
           -webkit-text-fill-color: transparent;
+          position: relative;
+          z-index: 1;
         }
 
         .project-status {
@@ -2597,7 +845,8 @@ const Projects = () => {
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 0.5px;
-          box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+          position: relative;
+          z-index: 1;
         }
 
         .project-category {
@@ -2610,6 +859,8 @@ const Projects = () => {
           letter-spacing: 0.5px;
           margin-left: 0.5rem;
           border: 1px solid;
+          position: relative;
+          z-index: 1;
         }
 
         .project-description {
@@ -2617,6 +868,8 @@ const Projects = () => {
           line-height: 1.6;
           margin-bottom: 1.5rem;
           font-size: 0.95rem;
+          position: relative;
+          z-index: 1;
         }
 
         .project-tech {
@@ -2624,6 +877,8 @@ const Projects = () => {
           flex-wrap: wrap;
           gap: 0.5rem;
           margin-bottom: 1.5rem;
+          position: relative;
+          z-index: 1;
         }
 
         .tech-tag {
@@ -2634,6 +889,8 @@ const Projects = () => {
           font-weight: 600;
           background: rgba(255, 255, 255, 0.05);
           transition: all 0.3s ease;
+          position: relative;
+          z-index: 1;
         }
 
         .project-card:hover .tech-tag {
@@ -2644,6 +901,8 @@ const Projects = () => {
         .project-actions {
           display: flex;
           gap: 1rem;
+          position: relative;
+          z-index: 1;
         }
 
         .project-link {
@@ -2656,6 +915,7 @@ const Projects = () => {
           display: flex;
           align-items: center;
           gap: 0.5rem;
+          cursor: pointer;
         }
 
         .live-link {
@@ -2679,12 +939,13 @@ const Projects = () => {
           transform: translateY(-2px);
         }
 
-        /* Stats Section */
+        /* Stats */
         .stats-section {
           display: grid;
           grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
           gap: 1.5rem;
-          margin-bottom: 4rem;
+          margin-bottom: 2rem;
+          perspective: 1000px;
         }
 
         .stat-card {
@@ -2694,11 +955,31 @@ const Projects = () => {
           border: 1px solid var(--border);
           text-align: center;
           transition: all 0.3s ease;
+          position: relative;
+          overflow: hidden;
           cursor: pointer;
         }
 
+        .stat-card::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          height: 100%;
+          background: linear-gradient(135deg, 
+            rgba(66, 133, 244, 0.1), 
+            rgba(52, 168, 83, 0.1)
+          );
+          opacity: 0;
+          transition: opacity 0.3s ease;
+        }
+
+        .stat-card:hover::before {
+          opacity: 1;
+        }
+
         .stat-card:hover {
-          transform: translateY(-5px);
           border-color: var(--google-blue);
           box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
         }
@@ -2711,6 +992,8 @@ const Projects = () => {
           background-clip: text;
           -webkit-text-fill-color: transparent;
           margin-bottom: 0.5rem;
+          position: relative;
+          z-index: 1;
         }
 
         .stat-label {
@@ -2719,181 +1002,10 @@ const Projects = () => {
           font-weight: 600;
           text-transform: uppercase;
           letter-spacing: 0.5px;
-        }
-
-        /* ===== FIXED MODAL STYLES - NO OVERLAP ===== */
-        .modal-overlay {
-          position: fixed;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: rgba(0, 0, 0, 0.85);
-          backdrop-filter: blur(10px);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          z-index: 99999;
-          padding: 100px 2rem 2rem 2rem;
-          overflow-y: auto;
-        }
-
-        .modal-content {
-          background: var(--card-bg);
-          border-radius: 24px;
-          padding: 3rem;
-          max-width: 800px;
-          width: 100%;
-          max-height: calc(100vh - 120px);
-          overflow-y: auto;
           position: relative;
-          border: 1px solid var(--border);
-          box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
-          margin: auto;
+          z-index: 1;
         }
 
-        .modal-content::-webkit-scrollbar {
-          width: 8px;
-        }
-
-        .modal-content::-webkit-scrollbar-track {
-          background: var(--bg-darker);
-          border-radius: 4px;
-        }
-
-        .modal-content::-webkit-scrollbar-thumb {
-          background: var(--google-blue);
-          border-radius: 4px;
-        }
-
-        .modal-close {
-          position: sticky;
-          top: 0;
-          float: right;
-          background: var(--bg-darker);
-          border: 2px solid var(--border);
-          color: var(--text-primary);
-          width: 40px;
-          height: 40px;
-          border-radius: 50%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          cursor: pointer;
-          font-size: 1.2rem;
-          transition: all 0.3s ease;
-          z-index: 10;
-        }
-
-        .modal-close:hover {
-          background: var(--google-red);
-          border-color: var(--google-red);
-          transform: rotate(90deg);
-        }
-
-        .modal-icon {
-          font-size: 4rem;
-          margin-bottom: 1.5rem;
-          display: block;
-          text-align: center;
-        }
-
-        .modal-title {
-          font-size: 2.5rem;
-          font-weight: 800;
-          margin-bottom: 1rem;
-          text-align: center;
-          background: var(--gradient, linear-gradient(45deg, #4285F4, #34A853));
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-
-        .modal-description {
-          color: var(--text-secondary);
-          line-height: 1.8;
-          margin-bottom: 2rem;
-          font-size: 1.1rem;
-          text-align: center;
-        }
-
-        .modal-features {
-          display: grid;
-          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-          gap: 1rem;
-          margin-bottom: 2rem;
-        }
-
-        .feature-item {
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-          padding: 0.75rem;
-          background: rgba(255, 255, 255, 0.05);
-          border-radius: 8px;
-          border: 1px solid var(--border);
-        }
-
-        .feature-icon {
-          color: var(--google-green);
-          font-size: 1.2rem;
-          flex-shrink: 0;
-        }
-
-        .feature-text {
-          color: var(--text-secondary);
-          font-size: 0.9rem;
-        }
-
-        .modal-tech-stack {
-          display: flex;
-          flex-wrap: wrap;
-          gap: 0.5rem;
-          margin-bottom: 2rem;
-          justify-content: center;
-        }
-
-        .modal-actions {
-          display: flex;
-          gap: 1rem;
-          justify-content: center;
-          flex-wrap: wrap;
-        }
-
-        .modal-button {
-          padding: 0.75rem 2rem;
-          border-radius: 12px;
-          font-weight: 600;
-          text-decoration: none;
-          transition: all 0.3s ease;
-          font-size: 1rem;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-        }
-
-        .modal-button-primary {
-          background: linear-gradient(45deg, var(--google-blue), var(--google-green));
-          color: white;
-        }
-
-        .modal-button-primary:hover {
-          transform: translateY(-2px);
-          box-shadow: 0 10px 25px rgba(66, 133, 244, 0.4);
-        }
-
-        .modal-button-secondary {
-          background: var(--bg-darker);
-          color: var(--text-primary);
-          border: 1px solid var(--border);
-        }
-
-        .modal-button-secondary:hover {
-          border-color: var(--text-primary);
-          transform: translateY(-2px);
-        }
-
-        /* Planning badge pulse animation */
         .planning-pulse {
           animation: pulseBadge 2s ease-in-out infinite;
         }
@@ -2903,144 +1015,337 @@ const Projects = () => {
           50% { box-shadow: 0 0 0 8px rgba(66, 133, 244, 0); }
         }
 
-        /* Responsive Design */
+        /* Modal Styles */
+        .modal-overlay {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0.85);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 99999;
+          padding: 1rem;
+          overflow-y: auto;
+          perspective: 1000px;
+        }
+
+        .modal-content {
+          background: #1E1E1E;
+          border-radius: 24px;
+          padding: 2.5rem;
+          max-width: 700px;
+          width: 100%;
+          max-height: 80%;
+          overflow-y: auto;
+          position: relative;
+          border: 1px solid #3C4043;
+          box-shadow: 
+            0 25px 50px rgba(0, 0, 0, 0.5),
+            0 0 100px rgba(66, 133, 244, 0.1);
+          margin: auto;
+          transform-style: preserve-3d;
+        }
+
+        .modal-content::-webkit-scrollbar {
+          width: 8px;
+        }
+
+        .modal-content::-webkit-scrollbar-track {
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb {
+          background: rgba(255, 255, 255, 0.2);
+          border-radius: 10px;
+        }
+
+        .modal-content::-webkit-scrollbar-thumb:hover {
+          background: rgba(255, 255, 255, 0.3);
+        }
+
+        .modal-close-btn {
+          position: sticky;
+          top: 0;
+          float: right;
+          background: #0A0A0A;
+          border: 2px solid #3C4043;
+          color: #E8EAED;
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.2rem;
+          transition: all 0.3s ease;
+          z-index: 10;
+          cursor: pointer;
+        }
+
+        .modal-close-btn:hover {
+          background: #EA4335;
+          border-color: #EA4335;
+          transform: scale(1.1) rotate(90deg);
+        }
+
+        .modal-icon {
+          font-size: 4rem;
+          margin-bottom: 1.5rem;
+          text-align: center;
+          animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        @keyframes iconFloat {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-10px); }
+        }
+
+        .modal-title {
+          font-size: 2.2rem;
+          font-weight: 800;
+          margin-bottom: 1rem;
+          text-align: center;
+          background: var(--gradient, linear-gradient(45deg, #4285F4, #34A853));
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+          line-height: 1.2;
+        }
+
+        .modal-description {
+          color: #9AA0A6;
+          line-height: 1.8;
+          margin-bottom: 1.5rem;
+          font-size: 1rem;
+          text-align: center;
+        }
+
+        .modal-features-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 0.75rem;
+          margin-bottom: 1.5rem;
+        }
+
+        .modal-feature-item {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          padding: 0.75rem;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 8px;
+          border: 1px solid #3C4043;
+          transition: all 0.3s ease;
+        }
+
+        .modal-feature-item:hover {
+          background: rgba(255, 255, 255, 0.1);
+          border-color: #4285F4;
+          transform: translateX(5px);
+        }
+
+        .modal-feature-check {
+          color: #34A853;
+          font-size: 1.1rem;
+        }
+
+        .modal-feature-text {
+          color: #9AA0A6;
+          font-size: 0.85rem;
+        }
+
+        .modal-tech-container {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 0.5rem;
+          margin-bottom: 1.5rem;
+          justify-content: center;
+        }
+
+        .modal-tech-tag {
+          padding: 0.5rem 1rem;
+          border-radius: 8px;
+          font-size: 0.85rem;
+          font-weight: 600;
+          background: rgba(255, 255, 255, 0.05);
+          border: 1.5px solid;
+          transition: all 0.3s ease;
+        }
+
+        .modal-tech-tag:hover {
+          transform: translateY(-3px);
+          box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-actions {
+          display: flex;
+          gap: 1rem;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .modal-action-btn {
+          padding: 0.75rem 1.5rem;
+          border-radius: 12px;
+          font-weight: 600;
+          text-decoration: none;
+          font-size: 0.95rem;
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          transition: all 0.3s ease;
+          cursor: pointer;
+        }
+
+        .modal-live-btn {
+          background: linear-gradient(45deg, #4285F4, #34A853);
+          color: white;
+        }
+
+        .modal-live-btn:hover {
+          transform: translateY(-2px);
+          box-shadow: 0 5px 15px rgba(66, 133, 244, 0.3);
+        }
+
+        .modal-github-btn {
+          background: #0A0A0A;
+          color: #E8EAED;
+          border: 1px solid #3C4043;
+        }
+
+        .modal-github-btn:hover {
+          border-color: #E8EAED;
+          transform: translateY(-2px);
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
           .projects-page {
-            padding: 1rem;
-            padding-top: 90px;
+            padding: 5rem 1rem 6rem;
           }
-
           .projects-header h1 {
             font-size: 2.5rem;
           }
-
           .projects-grid {
             grid-template-columns: 1fr;
             gap: 1.5rem;
           }
-
           .filter-container {
             gap: 0.5rem;
           }
-
           .filter-button {
             padding: 0.6rem 1rem;
             font-size: 0.8rem;
           }
-
           .project-card {
             padding: 1.5rem;
           }
-
           .stats-section {
             grid-template-columns: repeat(2, 1fr);
             gap: 1rem;
           }
-
-          .modal-overlay {
-            padding: 80px 1rem 1rem 1rem;
-          }
-
           .modal-content {
-            padding: 2rem;
-            max-height: calc(100vh - 100px);
+            padding: 1.5rem;
+            max-height: 90%;
           }
-
           .modal-title {
-            font-size: 2rem;
+            font-size: 1.8rem;
           }
         }
 
         @media (max-width: 480px) {
+          .projects-page {
+            padding: 4.5rem 0.75rem 7rem;
+          }
           .projects-header h1 {
             font-size: 2rem;
           }
-
           .projects-subtitle {
-            font-size: 1rem;
+            font-size: 0.9rem;
           }
-
           .project-title {
             font-size: 1.3rem;
           }
-
           .stats-section {
             grid-template-columns: 1fr;
           }
-
           .stat-number {
             font-size: 2.5rem;
           }
-
           .project-actions {
             flex-direction: column;
           }
-
+          .project-link {
+            justify-content: center;
+          }
+          .modal-content {
+            padding: 1.25rem;
+          }
+          .modal-title {
+            font-size: 1.5rem;
+          }
+          .modal-features-grid {
+            grid-template-columns: 1fr;
+          }
           .modal-actions {
             flex-direction: column;
           }
-
-          .modal-content {
-            padding: 1.5rem;
-          }
-
-          .modal-features {
-            grid-template-columns: 1fr;
-          }
-
-          .modal-overlay {
-            padding: 70px 0.5rem 0.5rem 0.5rem;
+          .modal-action-btn {
+            justify-content: center;
           }
         }
 
         @media (max-width: 360px) {
           .projects-page {
-            padding: 0.5rem;
-            padding-top: 80px;
+            padding: 4rem 0.5rem 7.5rem;
           }
-
-          .modal-content {
+          .project-card {
             padding: 1rem;
-          }
-
-          .modal-title {
-            font-size: 1.5rem;
-          }
-
-          .modal-description {
-            font-size: 0.9rem;
-          }
-
-          .modal-button {
-            padding: 0.6rem 1.5rem;
-            font-size: 0.9rem;
           }
         }
       `}</style>
 
-      {/* Header Section */}
+      {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
+        transition={{ 
+          duration: 0.8,
+          type: "spring",
+          stiffness: 100,
+          damping: 15
+        }}
         className="projects-header"
       >
         <h1>
           <GoogleText text="My Projects" />
         </h1>
-        <p className="projects-subtitle">
+        <motion.p 
+          className="projects-subtitle"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.5, duration: 0.6 }}
+        >
           Exploring innovative solutions through full-stack development, creating impactful applications that solve real-world problems.
-        </p>
+        </motion.p>
       </motion.div>
 
-      {/* Filter Section */}
+      {/* Filter */}
       <motion.div
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, delay: 0.2 }}
         className="filter-container"
       >
-        {filters.map((filterItem) => (
+        {filters.map((filterItem, index) => (
           <motion.button
             key={filterItem}
             className={`filter-button ${filter === filterItem ? 'active' : ''}`}
@@ -3050,252 +1355,413 @@ const Projects = () => {
             }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.3 + index * 0.1, type: "spring", stiffness: 200 }}
           >
             {filterItem}
             {filterItem !== 'All' && (
-              <span style={{ marginLeft: '0.5rem', opacity: 0.7, fontSize: '0.8rem' }}>
+              <motion.span 
+                style={{ marginLeft: '0.5rem', opacity: 0.7, fontSize: '0.8rem' }}
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ type: "spring", stiffness: 500, delay: 0.5 + index * 0.1 }}
+              >
                 ({projects.filter(p => p.category === filterItem).length})
-              </span>
+              </motion.span>
             )}
           </motion.button>
         ))}
       </motion.div>
 
-      {/* Projects Grid */}
-      <motion.div layout className="projects-grid">
+      {/* Grid */}
+      <motion.div 
+        layout 
+        className="projects-grid"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+      >
         <AnimatePresence mode="wait">
           {filteredProjects.length > 0 ? (
-            filteredProjects.map((project) => (
+            filteredProjects.map((project, index) => (
               <motion.div
                 key={project.id}
                 layout
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.5 }}
+                variants={cardVariants}
+                initial="hidden"
+                animate="visible"
+                exit="exit"
+                whileHover="hover"
+                whileTap="tap"
+                custom={index}
                 className="project-card"
                 style={{ '--gradient': project.gradient }}
-                onMouseEnter={handleProjectHover}
+                onMouseEnter={playHover}
                 onClick={() => handleProjectClick(project)}
-                whileHover={{ y: -10 }}
-                whileTap={{ scale: 0.98 }}
               >
                 <div className="project-header">
                   <motion.div 
                     className="project-icon"
-                    animate={{ rotate: [0, 10, -10, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                    animate={{ 
+                      rotate: [0, 10, -10, 0],
+                      scale: [1, 1.1, 1]
+                    }}
+                    transition={{ 
+                      duration: 3, 
+                      repeat: Infinity,
+                      repeatDelay: 2,
+                      ease: "easeInOut"
+                    }}
                   >
                     {project.icon}
                   </motion.div>
                   <div className="project-title-section">
                     <h3 className="project-title">{project.title}</h3>
-                    <span 
+                    <motion.span 
                       className={`project-status ${project.status === 'Planning' ? 'planning-pulse' : ''}`}
                       style={{ backgroundColor: getStatusColor(project.status) }}
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 400 }}
                     >
                       {project.status}
-                    </span>
-                    <span 
+                    </motion.span>
+                    <motion.span 
                       className="project-category"
                       style={{ 
                         borderColor: project.color,
                         color: project.color,
                         backgroundColor: `${project.color}15`
                       }}
+                      whileHover={{ scale: 1.1 }}
+                      transition={{ type: "spring", stiffness: 400 }}
                     >
                       {project.category}
-                    </span>
+                    </motion.span>
                   </div>
                 </div>
 
                 <p className="project-description">{project.description}</p>
 
                 <div className="project-tech">
-                  {project.tech.slice(0, 4).map((tech) => (
-                    <span
+                  {project.tech.slice(0, 4).map((tech, techIndex) => (
+                    <motion.span
                       key={tech}
                       className="tech-tag"
                       style={{ 
                         borderColor: project.color,
                         color: project.color
                       }}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.2 + techIndex * 0.1, type: "spring", stiffness: 300 }}
+                      whileHover={{ 
+                        scale: 1.1,
+                        backgroundColor: `${project.color}20`
+                      }}
                     >
                       {tech}
-                    </span>
+                    </motion.span>
                   ))}
                   {project.tech.length > 4 && (
-                    <span className="tech-tag" style={{ borderColor: '#5F6368', color: '#5F6368' }}>
+                    <motion.span 
+                      className="tech-tag" 
+                      style={{ borderColor: '#5F6368', color: '#5F6368' }}
+                      initial={{ opacity: 0, scale: 0 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.6, type: "spring", stiffness: 300 }}
+                    >
                       +{project.tech.length - 4} more
-                    </span>
+                    </motion.span>
                   )}
                 </div>
 
                 <div className="project-actions">
-                  <a
+                  <motion.a
                     href={project.link}
                     className="project-link live-link"
                     onClick={(e) => e.stopPropagation()}
                     target="_blank"
                     rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     🚀 Live Demo
-                  </a>
-                  <a
+                  </motion.a>
+                  <motion.a
                     href={project.github}
                     className="project-link github-link"
                     onClick={(e) => e.stopPropagation()}
                     target="_blank"
                     rel="noopener noreferrer"
+                    whileHover={{ scale: 1.05, y: -3 }}
+                    whileTap={{ scale: 0.95 }}
                   >
                     📂 GitHub
-                  </a>
+                  </motion.a>
                 </div>
               </motion.div>
             ))
           ) : (
             <motion.div 
               className="empty-state"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.5 }}
             >
-              <span className="empty-state-icon">🔍</span>
+              <motion.span 
+                className="empty-state-icon"
+                animate={{ 
+                  rotate: [0, 15, -15, 0],
+                  scale: [1, 1.2, 1]
+                }}
+                transition={{ 
+                  duration: 2,
+                  repeat: Infinity,
+                  repeatDelay: 1
+                }}
+              >
+                🔍
+              </motion.span>
               <p className="empty-state-text">No projects found in this category</p>
             </motion.div>
           )}
         </AnimatePresence>
       </motion.div>
 
-      {/* Stats Section */}
+      {/* Stats */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.4 }}
+        initial="hidden"
+        animate="visible"
         className="stats-section"
       >
         <motion.div 
-          className="stat-card"
-          whileHover={{ scale: 1.05 }}
+          className="stat-card" 
+          variants={statVariants}
+          custom={0}
+          whileHover="hover"
           whileTap={{ scale: 0.95 }}
         >
-          <div className="stat-number">{stats.completed}</div>
+          <motion.div 
+            className="stat-number"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.5, type: "spring", stiffness: 200 }}
+          >
+            {stats.completed}
+          </motion.div>
           <div className="stat-label">Completed Projects</div>
         </motion.div>
-
         <motion.div 
-          className="stat-card"
-          whileHover={{ scale: 1.05 }}
+          className="stat-card" 
+          variants={statVariants}
+          custom={1}
+          whileHover="hover"
           whileTap={{ scale: 0.95 }}
         >
-          <div className="stat-number">{stats.inProgress}</div>
+          <motion.div 
+            className="stat-number"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.6, type: "spring", stiffness: 200 }}
+          >
+            {stats.inProgress}
+          </motion.div>
           <div className="stat-label">In Progress</div>
         </motion.div>
-
         <motion.div 
-          className="stat-card"
-          whileHover={{ scale: 1.05 }}
+          className="stat-card" 
+          variants={statVariants}
+          custom={2}
+          whileHover="hover"
           whileTap={{ scale: 0.95 }}
         >
-          <div className="stat-number">{stats.planning}</div>
+          <motion.div 
+            className="stat-number"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.7, type: "spring", stiffness: 200 }}
+          >
+            {stats.planning}
+          </motion.div>
           <div className="stat-label">Planned</div>
         </motion.div>
-
         <motion.div 
-          className="stat-card"
-          whileHover={{ scale: 1.05 }}
+          className="stat-card" 
+          variants={statVariants}
+          custom={3}
+          whileHover="hover"
           whileTap={{ scale: 0.95 }}
         >
-          <div className="stat-number">{stats.totalTechnologies}</div>
+          <motion.div 
+            className="stat-number"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.8, type: "spring", stiffness: 200 }}
+          >
+            {stats.totalTechnologies}
+          </motion.div>
           <div className="stat-label">Technologies</div>
         </motion.div>
       </motion.div>
 
-      {/* ===== FIXED PROJECT DETAIL MODAL ===== */}
-      <AnimatePresence>
-        {selectedProject && (
+      {/* MODAL */}
+      {selectedProject && createPortal(
+        <AnimatePresence>
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
+            variants={modalOverlayVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
             className="modal-overlay"
             onClick={closeModal}
           >
             <motion.div
-              initial={{ scale: 0.8, opacity: 0, y: 50 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
-              exit={{ scale: 0.8, opacity: 0, y: 50 }}
-              transition={{ duration: 0.4, type: "spring", damping: 25 }}
+              variants={modalContentVariants}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
               className="modal-content"
+              style={{ '--gradient': selectedProject.gradient }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button 
-                className="modal-close"
+              <motion.button 
                 onClick={closeModal}
                 aria-label="Close modal"
+                className="modal-close-btn"
+                whileHover={{ scale: 1.1, rotate: 90 }}
+                whileTap={{ scale: 0.9 }}
               >
                 ✕
-              </button>
+              </motion.button>
 
-              <span className="modal-icon">{selectedProject.icon}</span>
-              <h2 className="modal-title" style={{ '--gradient': selectedProject.gradient }}>
+              <motion.div 
+                className="modal-icon"
+                animate={{ 
+                  y: [0, -10, 0],
+                  rotate: [0, 5, -5, 0]
+                }}
+                transition={{ 
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                {selectedProject.icon}
+              </motion.div>
+
+              <motion.h2 
+                className="modal-title"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+              >
                 {selectedProject.title}
-              </h2>
-              
-              <p className="modal-description">{selectedProject.longDescription}</p>
+              </motion.h2>
 
-              <div className="modal-features">
+              <motion.p 
+                className="modal-description"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+              >
+                {selectedProject.longDescription}
+              </motion.p>
+
+              <div className="modal-features-grid">
                 {selectedProject.features.map((feature, index) => (
-                  <div key={index} className="feature-item">
-                    <span className="feature-icon">✓</span>
-                    <span className="feature-text">{feature}</span>
-                  </div>
+                  <motion.div 
+                    key={index} 
+                    className="modal-feature-item"
+                    variants={featureItemVariants}
+                    initial="hidden"
+                    animate="visible"
+                    custom={index}
+                    whileHover={{ 
+                      scale: 1.05,
+                      backgroundColor: "rgba(255, 255, 255, 0.1)"
+                    }}
+                  >
+                    <motion.span 
+                      className="modal-feature-check"
+                      initial={{ scale: 0 }}
+                      animate={{ scale: 1 }}
+                      transition={{ delay: 0.4 + index * 0.1, type: "spring" }}
+                    >
+                      ✓
+                    </motion.span>
+                    <span className="modal-feature-text">{feature}</span>
+                  </motion.div>
                 ))}
               </div>
 
-              <div className="modal-tech-stack">
-                {selectedProject.tech.map((tech) => (
-                  <span
+              <motion.div 
+                className="modal-tech-container"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                {selectedProject.tech.map((tech, index) => (
+                  <motion.span
                     key={tech}
-                    className="tech-tag"
+                    className="modal-tech-tag"
                     style={{ 
                       borderColor: selectedProject.color,
-                      color: selectedProject.color,
-                      padding: '0.5rem 1rem',
-                      fontSize: '0.85rem'
+                      color: selectedProject.color
+                    }}
+                    initial={{ opacity: 0, scale: 0, y: 20 }}
+                    animate={{ opacity: 1, scale: 1, y: 0 }}
+                    transition={{ 
+                      delay: 0.5 + index * 0.1,
+                      type: "spring",
+                      stiffness: 300
+                    }}
+                    whileHover={{ 
+                      scale: 1.1,
+                      y: -5,
+                      backgroundColor: `${selectedProject.color}20`
                     }}
                   >
                     {tech}
-                  </span>
+                  </motion.span>
                 ))}
-              </div>
+              </motion.div>
 
-              <div className="modal-actions">
-                <a
+              <motion.div 
+                className="modal-actions"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 }}
+              >
+                <motion.a
                   href={selectedProject.link}
-                  className="modal-button modal-button-primary"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="modal-action-btn modal-live-btn"
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   🚀 View Live Demo
-                </a>
-                <a
+                </motion.a>
+                <motion.a
                   href={selectedProject.github}
-                  className="modal-button modal-button-secondary"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="modal-action-btn modal-github-btn"
+                  whileHover={{ scale: 1.05, y: -3 }}
+                  whileTap={{ scale: 0.95 }}
                 >
                   📂 View Source Code
-                </a>
-              </div>
+                </motion.a>
+              </motion.div>
             </motion.div>
           </motion.div>
-        )}
-      </AnimatePresence>
+        </AnimatePresence>,
+        document.body
+      )}
     </div>
   );
 };
 
 export default Projects;
-
